@@ -1,14 +1,9 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
 import STYLES from "../../styles";
 import COLORS from "../../colors";
+import { ButtonProps } from "./Button";
 
-export type ButtonProps = {
-  onPress?: () => void;
-  text?: string;
-  disabled?: boolean;
-};
-
-const Button = ({ onPress, text, disabled }: ButtonProps) => {
+const ActionButton = ({ onPress, text, disabled }: ButtonProps) => {
   return (
     <Pressable
       disabled={disabled}
@@ -21,19 +16,20 @@ const Button = ({ onPress, text, disabled }: ButtonProps) => {
         pressed || disabled ? styles.opacity : undefined,
       ]}
     >
-      <Text style={[STYLES.fs1, STYLES.colorPrimary]}>{text ?? "Button"}</Text>
+      <Text style={[STYLES.fs1, STYLES.colorWhite]}>
+        {text ?? "Action Button"}
+      </Text>
     </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    borderWidth: 1,
-    borderColor: COLORS.primary,
+    backgroundColor: COLORS.accent,
   },
   opacity: {
     opacity: 0.5,
   },
 });
 
-export default Button;
+export default ActionButton;

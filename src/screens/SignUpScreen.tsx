@@ -15,6 +15,7 @@ import { stringify } from "../utils";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { SignUpScreenProps } from "../navigation";
 import { useUser } from "../providers";
+import { ActionButton } from "../components/buttons";
 
 const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
   useDefaultHeader();
@@ -123,7 +124,7 @@ const SignUpScreen = ({ navigation }: SignUpScreenProps) => {
           ]}
         >
           <Button disabled={isPending} onPress={toLogin} text="Login" />
-          <Button disabled={isPending} onPress={submit} text="Sign Up" />
+          <ActionButton disabled={isPending} onPress={submit} text="Sign Up" />
         </View>
       </View>
     </SafeAreaView>

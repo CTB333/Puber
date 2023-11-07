@@ -2,10 +2,11 @@ import { View, Text, StyleSheet } from "react-native";
 import STYLES from "../styles";
 import { AddPartyScreenProps } from "../navigation";
 import { useEffect } from "react";
-import { useEnableDrawerSwipe } from "../hooks";
+import { useAccountHeader, useEnableDrawerSwipe } from "../hooks";
 
 const AddPartyScreen = ({ navigation }: AddPartyScreenProps) => {
   useEnableDrawerSwipe();
+  useAccountHeader();
 
   return (
     <View style={[STYLES.page, STYLES.center]}>

@@ -5,6 +5,12 @@ const STYLES = StyleSheet.create({
   flex: {
     flex: 1,
   },
+  row: {
+    flexDirection: "row",
+  },
+  column: {
+    flexDirection: "column",
+  },
   center: {
     alignItems: "center",
     justifyContent: "center",
@@ -12,7 +18,7 @@ const STYLES = StyleSheet.create({
   page: {
     width: "100%",
     height: "100%",
-    paddingHorizontal: 25,
+    paddingHorizontal: 15,
     paddingVertical: 15,
     backgroundColor: COLORS.secondary,
   },
@@ -35,10 +41,15 @@ const STYLES = StyleSheet.create({
   fs2: { fontSize: 20 },
   fs3: { fontSize: 25 },
   fs4: { fontSize: 30 },
+  bold: { fontWeight: "bold" },
 
   border: {
     borderWidth: 1,
     borderColor: COLORS.primary,
+  },
+  borderWhite: {
+    borderWidth: 1,
+    borderColor: COLORS.white,
   },
 
   p5: {
@@ -187,6 +198,17 @@ const STYLES = StyleSheet.create({
   },
   rad30: {
     borderRadius: 30,
+  },
+
+  shadow: {
+    shadowColor: COLORS.primary,
+    shadowOffset: {
+      width: 2,
+      height: 2,
+    },
+    shadowOpacity: 1,
+    shadowRadius: 6.21,
+    elevation: 15,
   },
 
   bgPrimary: { backgroundColor: COLORS.primary },

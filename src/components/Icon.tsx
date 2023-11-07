@@ -61,7 +61,7 @@ type IconName =
   | "upload"
   | "flag";
 
-type IconProps = {
+export type IconProps = {
   name: IconName;
   size?: number;
   color?: string;

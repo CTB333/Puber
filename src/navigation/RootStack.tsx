@@ -16,6 +16,8 @@ import {
 import TabNav from "./TabNav";
 import { RootStackParamBase } from "./types";
 import DrawerNav from "./DrawerNav";
+import COLORS from "../colors";
+import { Header } from "../components";
 
 const Stack = createStackNavigator<RootStackParamBase>();
 
@@ -25,17 +27,34 @@ const RootStack = () => {
       id="RootStack"
       initialRouteName="Splash"
       screenOptions={{
-        headerShown: false,
+        header: (props) => <Header {...props} />,
+        gestureEnabled: false,
       }}
     >
-      <Stack.Screen name="Splash" component={SplashScreen} />
       <Stack.Screen
-        options={{ gestureEnabled: false }}
+        options={{ headerShown: false }}
+        name="Splash"
+        component={SplashScreen}
+      />
+      <Stack.Screen
+        options={{ gestureEnabled: false, headerShown: false }}
         name="Drawer"
         component={DrawerNav}
       />
-      <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="SignUp" component={SignUpScreen} />
+      <Stack.Screen
+        options={{
+          headerLeftLabelVisible: false,
+        }}
+        name="Login"
+        component={LoginScreen}
+      />
+      <Stack.Screen
+        options={{
+          headerLeftLabelVisible: false,
+        }}
+        name="SignUp"
+        component={SignUpScreen}
+      />
       <Stack.Screen
         name="DriverApplication"
         component={DriverApplicationScreen}

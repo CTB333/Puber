@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import STYLES from "../styles";
 import { HomeScreen, ListScreen, AddPartyScreen } from "../screens";
 import { TabNavParamBase } from "./types";
-import { BottomTabBar, DrawerSceneWrapper, Icon } from "../components";
+import { BottomTabBar, DrawerSceneWrapper, Header, Icon } from "../components";
 import COLORS from "../colors";
 
 const Tab = createBottomTabNavigator<TabNavParamBase>();
@@ -16,6 +16,7 @@ const TabNav = () => {
         screenOptions={{
           tabBarActiveTintColor: COLORS.primary,
           tabBarInactiveTintColor: COLORS.primary,
+          header: (props) => <Header {...props} />,
         }}
         initialRouteName="Home"
         id="Tabs"

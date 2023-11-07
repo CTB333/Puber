@@ -17,6 +17,7 @@ const Input = ({ placeholder, state, setState }: InputProps) => {
         style={[
           STYLES.mh10,
           STYLES.fs1,
+          STYLES.colorPrimary,
           isFocused ? { color: COLORS.accent } : undefined,
         ]}
       >

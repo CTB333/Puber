@@ -5,18 +5,20 @@ import COLORS from "../../colors";
 type ButtonProps = {
   onPress?: () => void;
   text?: string;
+  disabled?: boolean;
 };
 
-const Button = ({ onPress, text }: ButtonProps) => {
+const Button = ({ onPress, text, disabled }: ButtonProps) => {
   return (
     <Pressable
+      disabled={disabled}
       onPress={onPress}
       style={({ pressed }) => [
         STYLES.ph15,
         STYLES.pv10,
         STYLES.rad15,
         styles.container,
-        pressed ? styles.opacity : undefined,
+        pressed || disabled ? styles.opacity : undefined,
       ]}
     >
       <Text>{text ?? "Button"}</Text>

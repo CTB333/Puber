@@ -4,22 +4,29 @@ import { NavigationContainer } from "@react-navigation/native";
 import "react-native-gesture-handler";
 import { LogBox } from "react-native";
 import { RootStack } from "./src/navigation";
-import { useEffect } from "react";
+import { HeaderProvider, PopUpProvider, UserProvider } from "./src/providers";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+const IGNORED_LOGS = [
+  "Sending `onAnimatedValueUpdate` with no listeners registered",
+  "Sending...",
+];
+LogBox.ignoreLogs(IGNORED_LOGS);
 
 const App = () => {
-  useEffect(() => {
-    LogBox.ignoreLogs([
-      "Sending `onAnimatedValueUpdate` with no listeners registered",
-      "Sending...",
-    ]);
-  }, []);
-
   const variable = "variable";
 
   return (
-    <NavigationContainer>
-      <RootStack />
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <UserProvider>
+        <PopUpProvider>
+          <HeaderProvider>
+            <NavigationContainer>
+              <RootStack />
+            </NavigationContainer>
+          </HeaderProvider>
+        </PopUpProvider>
+      </UserProvider>
+    </SafeAreaProvider>
   );
 };
 

@@ -11,5 +11,5 @@ Terminal 3:
 npm run server
 
 File Change:
-src/hooks/useFetch
-  const URL = "https://[copy the url up to the arrow next to Forwarding in terminal 3].ngrok-free.app"
+src/Constants.ts
+   URL : "https://[copy the url up to the arrow next to Forwarding in terminal 3].ngrok-free.app"

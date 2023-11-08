@@ -1,4 +1,5 @@
 import useAccountHeader from "./useAccountHeader";
+import useAddParty from "./useAddParty";
 import useAutoLogin from "./useAutoLogin";
 import useDefaultHeader from "./useDefaultHeader";
 import useDrawerHeader from "./useDrawerHeader";
@@ -7,6 +8,7 @@ import useErrorMsg from "./useErrorMsg";
 import useFetch from "./useFetch";
 import useGoBackHeader from "./useGoBackHeader";
 import useLogout from "./useLogout";
+import useModalComponent from "./useModalComponent";
 import useOnSuccess from "./useOnSuccess";
 import useOpen from "./useOpen";
 import useRememberUser from "./useRememberUser";
@@ -32,4 +34,6 @@ export {
   useRememberUser,
   useAutoLogin,
   useLogout,
+  useAddParty,
+  useModalComponent,
 };

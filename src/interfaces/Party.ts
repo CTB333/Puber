@@ -5,9 +5,11 @@ export type Party = {
   location: PartyLocation;
   date: PartyDate; // Should we allow multiple day parties?
   tags: PartyTag[];
+  userId: number;
 };
 
 export type PartyData = {
+  userId: number;
   title: string;
   desc: string;
   location: PartyLocation;
@@ -40,6 +42,7 @@ export type Address = {
 };
 
 export type PartyLocation = Address & {
+  fullAddress: string;
   lat: number;
   lng: number;
 };

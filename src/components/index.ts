@@ -8,6 +8,9 @@ import Collapsable from "./Collapsable";
 import PressOpaque from "./PressOpaque";
 import Header from "./Header";
 import Logo from "./Logo";
+import FormHeader from "./FormHeader";
+import ScrollFooterSpace from "./ScrollFooterSpace";
+import MyScrollView from "./MyScrollView";
 
 export {
   Button,
@@ -22,4 +25,7 @@ export {
   PressOpaque,
   Header,
   Logo,
+  FormHeader,
+  ScrollFooterSpace,
+  MyScrollView,
 };

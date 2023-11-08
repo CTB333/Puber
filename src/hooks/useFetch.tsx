@@ -1,22 +1,22 @@
 import { useState, useEffect } from "react";
 import { stringify } from "../utils";
+import CONSTANTS from "../Constants";
+import useOnChange from "./useOnChange";
 
 interface UseFetchResult {
   data: any | null;
+  dataChange: number;
   isPending: boolean;
   success: boolean;
   error: any | null;
-  get: (url: string) => void;
-  post: (url: string, data: any) => void;
-  put: (url: string, data: any) => void;
-  del: (url: string) => void;
+  get: (url: string, baseURL?: string) => void;
+  post: (url: string, data: any, baseURL?: string) => void;
+  put: (url: string, data: any, baseURL?: string) => void;
+  del: (url: string, baseURL?: string) => void;
 }
 
-const URL =
-  "https://6096-2605-8300-ff01-154-91de-76ed-61b8-7b38.ngrok-free.app/";
-
 const useFetch = (): UseFetchResult => {
-  const [data, setData] = useState<any | null>(null);
+  const [data, setData, dataChange] = useOnChange<any | null>(null);
   const [isPending, setIsPending] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -44,10 +44,16 @@ const useFetch = (): UseFetchResult => {
   //   }, 1000);
   // }, [url]);
 
-  const get = async (url: string) => {
+  const toUrl = (url: string, baseURL?: string) => {
+    if (!baseURL) return CONSTANTS.URL + url;
+
+    return baseURL + url;
+  };
+
+  const get = async (url: string, baseURL?: string) => {
     try {
       let controller = createAbortController();
-      let res = await fetch(URL + url, {
+      let res = await fetch(toUrl(url, baseURL), {
         headers: { Accept: "application/json" },
         signal: controller.signal,
       });
@@ -58,10 +64,10 @@ const useFetch = (): UseFetchResult => {
     }
   };
 
-  const post = async (url: string, data: any) => {
+  const post = async (url: string, data: any, baseURL?: string) => {
     try {
       let controller = createAbortController();
-      let res = await fetch(URL + url, {
+      let res = await fetch(toUrl(url, baseURL), {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -77,10 +83,10 @@ const useFetch = (): UseFetchResult => {
     }
   };
 
-  const put = async (url: string, data: any) => {
+  const put = async (url: string, data: any, baseURL?: string) => {
     try {
       let controller = createAbortController();
-      let res = await fetch(URL + url, {
+      let res = await fetch(toUrl(url, baseURL), {
         method: "PUT",
         headers: {
           Accept: "application/json",
@@ -96,10 +102,10 @@ const useFetch = (): UseFetchResult => {
     }
   };
 
-  const del = async (url: string) => {
+  const del = async (url: string, baseURL?: string) => {
     try {
       let controller = createAbortController();
-      let res = await fetch(URL + url, {
+      let res = await fetch(toUrl(url, baseURL), {
         method: "DELETE",
         signal: controller.signal,
       });
@@ -152,7 +158,7 @@ const useFetch = (): UseFetchResult => {
     setAbort(null);
   };
 
-  return { data, isPending, success, error, get, post, put, del };
+  return { data, dataChange, isPending, success, error, get, post, put, del };
 };
 
 export default useFetch;

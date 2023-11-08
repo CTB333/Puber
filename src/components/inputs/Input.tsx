@@ -1,15 +1,16 @@
 import { StyleSheet, TextInput, Text, View } from "react-native";
 import COLORS from "../../colors";
 import STYLES from "../../styles";
-import { useOpen } from "../../hooks";
+import useOpen from "../../hooks/useOpen";
 
 type InputProps = {
   placeholder?: string;
+  disabled?: boolean;
   state: string;
   setState: (val: string) => void;
 };
 
-const Input = ({ placeholder, state, setState }: InputProps) => {
+const Input = ({ placeholder, disabled, state, setState }: InputProps) => {
   const [isFocused, focus, unFocus] = useOpen();
   return (
     <View style={[STYLES.width]}>
@@ -26,12 +27,14 @@ const Input = ({ placeholder, state, setState }: InputProps) => {
       <TextInput
         onFocus={focus}
         onBlur={unFocus}
+        editable={!disabled}
         placeholder=""
         value={state}
         onChangeText={setState}
         style={[
           STYLES.fs2,
           STYLES.p5,
+          STYLES.colorPrimary,
           styles.container,
           isFocused
             ? { borderColor: COLORS.accent, color: COLORS.accent }

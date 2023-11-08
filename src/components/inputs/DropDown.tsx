@@ -1,15 +1,21 @@
 import { Pressable, Text, View } from "react-native";
-import { useOpen } from "../../hooks";
+import useOpen from "../../hooks/useOpen";
 import STYLES from "../../styles";
 import COLORS from "../../colors";
 import Collapsable from "../Collapsable";
 
+type DropDownOptionType = {
+  key: string;
+  value: string;
+  text?: string;
+};
+
 type DropDownProps = {
   placeHolder?: string;
   allowSelectNone?: boolean;
-  state?: string;
-  setState: (val?: string) => void;
-  options: string[];
+  state?: DropDownOptionType;
+  setState: (val?: DropDownOptionType) => void;
+  options: DropDownOptionType[];
 };
 
 const DropDown = ({
@@ -21,7 +27,7 @@ const DropDown = ({
 }: DropDownProps) => {
   const [isOpen, _open, close, toggle] = useOpen();
 
-  const onSelect = (option?: string) => {
+  const onSelect = (option?: DropDownOptionType) => {
     setState(option);
     close();
   };
@@ -52,7 +58,7 @@ const DropDown = ({
           <Text
             style={[STYLES.fs2, isOpen ? { color: COLORS.accent } : undefined]}
           >
-            {state ?? " "}
+            {state?.text ?? state?.value ?? " "}
           </Text>
         </View>
       </Pressable>
@@ -86,7 +92,7 @@ const DropDown = ({
             return (
               <Pressable
                 onPress={() => onSelect(option)}
-                key={index}
+                key={option.key}
                 style={({ pressed }) => [
                   STYLES.border,
                   STYLES.rad10,
@@ -102,7 +108,7 @@ const DropDown = ({
                       pressed ? { color: COLORS.accent } : undefined,
                     ]}
                   >
-                    {option}
+                    {option.text ?? option.value}
                   </Text>
                 )}
               </Pressable>

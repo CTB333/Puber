@@ -17,6 +17,30 @@
       "id": 2
     }
   ],
-  "parties": [],
+  "parties": [
+    {
+      "userId": 2,
+      "title": "Test Party",
+      "desc": "Test Desc",
+      "location": {
+        "street": "65 Marine Dr",
+        "city": "Buffalo",
+        "state": "NY",
+        "zip": "14228",
+        "country": "US",
+        "fullAddress": "65 Marine Dr Buffalo NY 14228 US",
+        "lat": 43.028123,
+        "lng": -78.79272739999999
+      },
+      "date": {
+        "date": "12/11/23",
+        "start": "9:00 PM",
+        "end": "12:00 PM",
+        "dateTime": 1702346400000
+      },
+      "tags": [],
+      "id": 1
+    }
+  ],
   "flags": []
 }

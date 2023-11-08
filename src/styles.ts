@@ -15,6 +15,9 @@ const STYLES = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  even: {
+    justifyContent: "space-evenly",
+  },
   page: {
     width: "100%",
     height: "100%",
@@ -36,12 +39,19 @@ const STYLES = StyleSheet.create({
     left: 0,
     right: 0,
   },
+  absolute: {
+    position: "absolute",
+  },
+  relative: {
+    position: "relative",
+  },
 
   fs1: { fontSize: 15 },
   fs2: { fontSize: 20 },
   fs3: { fontSize: 25 },
   fs4: { fontSize: 30 },
   bold: { fontWeight: "bold" },
+  textCenter: { textAlign: "center" },
 
   border: {
     borderWidth: 1,

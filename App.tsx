@@ -4,7 +4,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import "react-native-gesture-handler";
 import { LogBox } from "react-native";
 import { RootStack } from "./src/navigation";
-import { HeaderProvider, PopUpProvider, UserProvider } from "./src/providers";
+import {
+  HeaderProvider,
+  ModalProvider,
+  PopUpProvider,
+  UserProvider,
+} from "./src/providers";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 const IGNORED_LOGS = [
   "Sending `onAnimatedValueUpdate` with no listeners registered",
@@ -18,13 +23,15 @@ const App = () => {
   return (
     <SafeAreaProvider>
       <UserProvider>
-        <PopUpProvider>
-          <HeaderProvider>
-            <NavigationContainer>
-              <RootStack />
-            </NavigationContainer>
-          </HeaderProvider>
-        </PopUpProvider>
+        <ModalProvider>
+          <PopUpProvider>
+            <HeaderProvider>
+              <NavigationContainer>
+                <RootStack />
+              </NavigationContainer>
+            </HeaderProvider>
+          </PopUpProvider>
+        </ModalProvider>
       </UserProvider>
     </SafeAreaProvider>
   );

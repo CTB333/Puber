@@ -2,6 +2,7 @@ import HeaderProvider, {
   useHeader,
   SetHeaderContextType,
 } from "./HeaderProvider";
+import ModalProvider, { useModal } from "./ModalProvider";
 import PopUpProvider, { usePopUp } from "./PopUpProvider";
 import UserProvider, { useUser } from "./UserProvider";
 
@@ -13,4 +14,6 @@ export {
   UserProvider,
   usePopUp,
   PopUpProvider,
+  useModal,
+  ModalProvider,
 };

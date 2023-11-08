@@ -16,9 +16,6 @@ const useAutoLogin = () => {
   }, []);
 
   useEffect(() => {
-    console.log(``);
-    console.log(`Data: ${stringify(data)}`);
-    console.log(``);
     if (!data) return;
     setUser(data);
   }, [data]);

@@ -47,10 +47,6 @@ export const isStringValidDate = (dateString: string) => {
 
   if (year > 100 || year < 1) return false;
 
-  let date = stringToDate(dateString);
-
-  if (!isDateAfterToday(date)) return false;
-
   return true;
 };
 

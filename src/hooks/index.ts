@@ -6,6 +6,7 @@ import useDrawerHeader from "./useDrawerHeader";
 import useEnableDrawerSwipe from "./useEnableDrawerSwipe";
 import useErrorMsg from "./useErrorMsg";
 import useFetch from "./useFetch";
+import useGetAllParties from "./useGetAllParties";
 import useGoBackHeader from "./useGoBackHeader";
 import useLogout from "./useLogout";
 import useModalComponent from "./useModalComponent";
@@ -36,4 +37,5 @@ export {
   useLogout,
   useAddParty,
   useModalComponent,
+  useGetAllParties,
 };

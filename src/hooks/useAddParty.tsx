@@ -3,6 +3,7 @@ import useAddPartyLocation from "./useAddPartyLocation";
 import {
   dateAndTimeStringToDate,
   dateToString,
+  isDateAfterToday,
   isStringValidDate,
   isStringValidTime,
   stringify,
@@ -69,6 +70,16 @@ const useAddParty = () => {
   }, [partyLocationChange]);
 
   useEffect(() => {
+    for (let key in addressError) {
+      let value = addressError[key as keyof typeof addressError];
+      if (value.length > 0) {
+        errorOut();
+        break;
+      }
+    }
+  }, [addressErrorChange]);
+
+  useEffect(() => {
     if (!data) return;
 
     console.log(`Party: ${stringify(data)}`);
@@ -82,6 +93,12 @@ const useAddParty = () => {
     setError(initialError);
   };
 
+  const errorOut = () => {
+    setSuccess(false);
+    setLoading(false);
+    return false;
+  };
+
   const validate = () => {
     clearError();
 
@@ -90,27 +107,27 @@ const useAddParty = () => {
         ...prev,
         server: `Internal Front-End Error: Missing Party Location`,
       }));
-      return false;
+      return errorOut();
     }
     if (title.length == 0) {
       setError((prev) => ({ ...prev, title: `Missing party title` }));
-      return false;
+      return errorOut();
     }
     if (desc.length == 0) {
       setError((prev) => ({ ...prev, desc: `Missing party desc` }));
-      return false;
+      return errorOut();
     }
     if (date.length == 0) {
       setError((prev) => ({ ...prev, date: `Missing party date` }));
-      return false;
+      return errorOut();
     }
     if (startTime.length == 0) {
       setError((prev) => ({ ...prev, startTime: `Missing party start time` }));
-      return false;
+      return errorOut();
     }
     if (endTime.length == 0) {
       setError((prev) => ({ ...prev, endTime: `Missing party end time` }));
-      return false;
+      return errorOut();
     }
 
     if (!isStringValidDate(date)) {
@@ -118,7 +135,7 @@ const useAddParty = () => {
         ...prev,
         date: `Date should be in mm/dd/yy format`,
       }));
-      return false;
+      return errorOut();
     }
 
     if (!isStringValidTime(startTime)) {
@@ -126,7 +143,7 @@ const useAddParty = () => {
         ...prev,
         startTime: `Time should be in hh:mm AM/PM format`,
       }));
-      return false;
+      return errorOut();
     }
 
     if (!isStringValidTime(endTime)) {
@@ -134,7 +151,15 @@ const useAddParty = () => {
         ...prev,
         startTime: `Time should be in hh:mm AM/PM format`,
       }));
-      return false;
+      return errorOut();
+    }
+
+    if (!isDateAfterToday(dateAndTimeStringToDate(date, startTime))) {
+      setError((prev) => ({
+        ...prev,
+        date: `Date and start time must be after today`,
+      }));
+      return errorOut();
     }
 
     return true;

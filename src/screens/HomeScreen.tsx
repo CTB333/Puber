@@ -5,30 +5,41 @@ import { HomeScreenProps } from "../navigation";
 import {
   useDrawerHeader,
   useEnableDrawerSwipe,
+  useGetAllParties,
   useSelect,
   useSetHeader,
 } from "../hooks";
 import { useState } from "react";
+import { stringify } from "../utils";
+import { ScrollView } from "react-native-gesture-handler";
 
 const HomeScreen = ({ navigation }: HomeScreenProps) => {
   useEnableDrawerSwipe();
   useDrawerHeader();
 
+  const { parties } = useGetAllParties([navigation.isFocused()]);
+
   return (
     <View style={[STYLES.page, STYLES.center, STYLES.p30]}>
-      <View
+      <ScrollView
         style={[
           STYLES.flex,
           STYLES.rad15,
           STYLES.bgPrimary,
           STYLES.borderWhite,
-          STYLES.center,
           STYLES.width,
+          STYLES.p10,
           STYLES.shadow,
         ]}
       >
-        <Text style={[STYLES.colorWhite]}>Put Map In Here</Text>
-      </View>
+        {parties.map((party) => {
+          return (
+            <View key={party.id} style={[{ marginBottom: 15 }]}>
+              <Text style={[STYLES.colorWhite]}>{stringify(party)}</Text>
+            </View>
+          );
+        })}
+      </ScrollView>
     </View>
   );
 };

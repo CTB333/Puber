@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import useAddPartyLocation from "./useAddPartyLocation";
 import {
   dateAndTimeStringToDate,
+  dateToString,
   isStringValidDate,
   isStringValidTime,
   stringify,
 } from "../utils";
 import useFetch from "./useFetch";
-import { Party, PartyData } from "../interfaces";
+import { Party, PartyData, PartyTag } from "../interfaces";
 import useOnChange from "./useOnChange";
 import { useUser } from "../providers";
 
@@ -27,15 +28,17 @@ const useAddParty = () => {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const [title, setTitle] = useState("Test Party");
-  const [desc, setDesc] = useState("Test Desc");
-  const [date, setDate] = useState("12/11/23");
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+  const [date, setDate] = useState(dateToString(new Date()));
   const [startTime, setStartTime] = useState("9:00 PM");
   const [endTime, setEndTime] = useState("12:00 PM");
+  const [tags, setTags] = useState<PartyTag[]>([]);
   const {
     partyLocation,
     partyLocationChange,
     submit: submitAddress,
+    reset: resetAddress,
     error: addressError,
     errorChange: addressErrorChange,
 
@@ -137,6 +140,25 @@ const useAddParty = () => {
     return true;
   };
 
+  const selectTag = (tag: PartyTag) => {
+    let newTags = [...tags];
+    if (newTags.includes(tag)) newTags = newTags.filter((old) => old !== tag);
+    else newTags.push(tag);
+
+    setTags(newTags);
+  };
+
+  const reset = () => {
+    clearError();
+    resetAddress();
+    setTitle("");
+    setDesc("");
+    setDate(dateToString(new Date()));
+    setStartTime("9:00 PM");
+    setEndTime("12:00 PM");
+    setTags([]);
+  };
+
   const submit = () => {
     if (!validate()) return;
     if (!partyLocation) return;
@@ -154,7 +176,7 @@ const useAddParty = () => {
         end: endTime,
         dateTime: dateTime.getTime(),
       },
-      tags: [],
+      tags,
     };
 
     post(`parties`, party);
@@ -167,6 +189,7 @@ const useAddParty = () => {
       submitAddress();
     },
     success,
+    reset,
     loading,
     error,
     addressError,
@@ -193,6 +216,8 @@ const useAddParty = () => {
     setState,
     country,
     setCountry,
+    tags,
+    setTags: selectTag,
   };
 };
 

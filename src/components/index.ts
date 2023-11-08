@@ -1,6 +1,6 @@
 import { Button } from "./buttons";
 import { BottomTabBar } from "./bottomTabs";
-import { Input, DropDown } from "./inputs";
+import { Input, DropDown, RadioButton } from "./inputs";
 import DrawerSceneWrapper from "./DrawerSceneWrapper";
 import Drawer from "./Drawer";
 import Icon, { IconProps } from "./Icon";
@@ -20,6 +20,7 @@ export {
   IconProps,
   BottomTabBar,
   Input,
+  RadioButton,
   DropDown,
   Collapsable,
   PressOpaque,

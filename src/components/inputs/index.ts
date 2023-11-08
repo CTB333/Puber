@@ -1,4 +1,5 @@
 import DropDown from "./DropDown";
 import Input from "./Input";
+import RadioButton from "./RadioButton";
 
-export { Input, DropDown };
+export { Input, DropDown, RadioButton };

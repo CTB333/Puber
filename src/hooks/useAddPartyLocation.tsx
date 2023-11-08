@@ -32,10 +32,10 @@ const useAddPartyLocation = () => {
     PartyLocation | undefined
   >(undefined);
 
-  const [street, setStreet] = useState("65 Marine Dr");
-  const [city, setCity] = useState("Amherst");
-  const [zip, setZip] = useState("14228");
-  const [state, setState] = useState("NY");
+  const [street, setStreet] = useState("");
+  const [city, setCity] = useState("");
+  const [zip, setZip] = useState("");
+  const [state, setState] = useState("");
   const [country, setCountry] = useState("US");
 
   const [error, setError, errorChange] = useOnChange(initialError);
@@ -189,12 +189,24 @@ const useAddPartyLocation = () => {
     let query =
       fullAddress.split(" ").join("+") + `&key=${CONSTANTS.GoogleAPIKey}`;
 
-    console.log(`Query: ${query}`);
+    // console.log(`Query: ${query}`);
     return query;
   };
 
   const createFullAddress = () => {
     return `${street.trim()}, ${city.trim()} ${zip.trim()}, ${state.trim()} , ${country.trim()}`;
+  };
+
+  const reset = () => {
+    clearError();
+    setPartyLocation(undefined);
+    setLocationOptions([]);
+    setChosenLocation(undefined);
+    setStreet("");
+    setCity("");
+    setZip("");
+    setState("");
+    setCountry("US");
   };
 
   // Submit Address to google to get lat/lng
@@ -326,8 +338,10 @@ const useAddPartyLocation = () => {
 
   return {
     submit,
+    reset,
     error,
     errorChange,
+
     street,
     setStreet,
     city,

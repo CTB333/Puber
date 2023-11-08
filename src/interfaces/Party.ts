@@ -33,6 +33,15 @@ export enum PartyTag {
   X = "X-Rated",
 }
 
+export const AllPartyTags = [
+  PartyTag.TwentyOne,
+  PartyTag.Byob,
+  PartyTag.Byow,
+  PartyTag.Rager,
+  PartyTag.Calm,
+  PartyTag.X,
+];
+
 export type Address = {
   street: string;
   city: string;

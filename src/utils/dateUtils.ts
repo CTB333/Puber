@@ -118,3 +118,11 @@ export const isStringValidTime = (timeString: string) => {
 
   return true;
 };
+
+export const dateToString = (date: Date) => {
+  let month = date.getMonth() + 1;
+  let day = date.getDate();
+  let year = date.getFullYear();
+
+  return `${month}/${day}/${year.toString().slice(2)}`;
+};

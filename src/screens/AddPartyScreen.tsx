@@ -11,9 +11,15 @@ import {
   useOnSuccess,
   useSuccessMessage,
 } from "../hooks";
-import { FormHeader, Input, ScrollFooterSpace } from "../components";
+import {
+  FormHeader,
+  Input,
+  RadioButton,
+  ScrollFooterSpace,
+} from "../components";
 import { ScrollView } from "react-native-gesture-handler";
 import { ActionButton, Button } from "../components/buttons";
+import { AllPartyTags } from "../interfaces";
 
 const AddPartyScreen = ({ navigation }: AddPartyScreenProps) => {
   useEnableDrawerSwipe();
@@ -21,6 +27,7 @@ const AddPartyScreen = ({ navigation }: AddPartyScreenProps) => {
 
   const {
     submit,
+    reset,
     success,
     loading,
     error,
@@ -48,12 +55,15 @@ const AddPartyScreen = ({ navigation }: AddPartyScreenProps) => {
     setState,
     country,
     setCountry,
+    tags,
+    setTags,
   } = useAddParty();
 
   const successMsg = useSuccessMessage();
 
   useOnSuccess(() => {
     successMsg(`Success`, `Party Created`);
+    reset();
     navigation.navigate("Home");
   }, success);
 
@@ -88,7 +98,20 @@ const AddPartyScreen = ({ navigation }: AddPartyScreenProps) => {
         />
         <Input placeholder="End Time" state={endTime} setState={setEndTime} />
 
-        <ScrollFooterSpace divideBy={3} />
+        <FormHeader title="Categories" />
+        {AllPartyTags.map((tag) => {
+          return (
+            <View key={tag} style={[{ marginBottom: 15 }]}>
+              <RadioButton
+                enabled={tags.includes(tag)}
+                text={tag}
+                onPress={() => setTags(tag)}
+              />
+            </View>
+          );
+        })}
+
+        <ScrollFooterSpace divideBy={4} />
       </ScrollView>
       <View style={[STYLES.center]}>
         <ActionButton disabled={loading} text="Submit" onPress={submit} />

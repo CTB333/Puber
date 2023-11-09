@@ -1,13 +1,14 @@
 import * as Location from "expo-location";
 import { useEffect, useState } from "react";
 import useOnChange from "./useOnChange";
+import useErrorMsg from "./useErrorMsg";
 
 const initialError = {
   permission: "",
 };
 
 const useGetUserLocation = () => {
-  const [location, setLocation] = useState<
+  const [location, setLocation, locationChange] = useOnChange<
     { lat: number; lng: number } | undefined
   >(undefined);
   const [error, setError, errorChange] = useOnChange(initialError);
@@ -15,6 +16,8 @@ const useGetUserLocation = () => {
   useEffect(() => {
     getLocation();
   }, []);
+
+  useErrorMsg(error, errorChange);
 
   const getLocation = () => {
     (async () => {
@@ -36,8 +39,7 @@ const useGetUserLocation = () => {
 
   return {
     location,
-    error,
-    errorChange,
+    locationChange,
   };
 };
 

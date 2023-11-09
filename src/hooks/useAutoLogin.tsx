@@ -5,7 +5,7 @@ import { useUser } from "../providers";
 import { stringify } from "../utils";
 
 const useAutoLogin = () => {
-  const { getStore } = useRememberUser();
+  const { getStore, clear } = useRememberUser();
   const { data, isPending, error, get } = useFetch();
   const { setUser } = useUser();
 
@@ -14,6 +14,11 @@ const useAutoLogin = () => {
 
     login();
   }, []);
+
+  useEffect(() => {
+    if (!error) return;
+    clear();
+  }, [stringify(error)]);
 
   useEffect(() => {
     if (!data) return;

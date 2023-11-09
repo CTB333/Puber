@@ -16,7 +16,7 @@ type SearchContextType = SearchContextStateType & {
 const initialState = {
   search: "",
   filters: [],
-  searchRadius: 15,
+  searchRadius: 30,
 };
 
 const initialValue = {
@@ -37,7 +37,7 @@ type SearchProviderProps = {
 const SearchProvider = ({ children }: SearchProviderProps) => {
   const [search, setSearch] = useState("");
   const [filters, setFilters] = useState<PartyTag[]>([]);
-  const [searchRadius, setSearchRadius] = useState<number>(15);
+  const [searchRadius, setSearchRadius] = useState<number>(30);
 
   const value = {
     search,

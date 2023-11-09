@@ -4,7 +4,7 @@ import STYLES from "../../styles";
 import COLORS from "../../colors";
 import Collapsable from "../Collapsable";
 
-type DropDownOptionType = {
+export type DropDownOptionType = {
   key: string;
   value: string;
   text?: string;
@@ -16,6 +16,7 @@ type DropDownProps = {
   state?: DropDownOptionType;
   setState: (val?: DropDownOptionType) => void;
   options: DropDownOptionType[];
+  color?: string;
 };
 
 const DropDown = ({
@@ -24,6 +25,7 @@ const DropDown = ({
   setState,
   options,
   placeHolder,
+  color,
 }: DropDownProps) => {
   const [isOpen, _open, close, toggle] = useOpen();
 
@@ -42,7 +44,9 @@ const DropDown = ({
           style={[
             STYLES.mh10,
             STYLES.fs1,
-            isOpen ? { color: COLORS.accent } : undefined,
+            {
+              color: isOpen ? COLORS.accent : color ? color : COLORS.primary,
+            },
           ]}
         >
           {placeHolder ?? "Placeholder"}
@@ -52,11 +56,22 @@ const DropDown = ({
             STYLES.border,
             STYLES.rad10,
             STYLES.p5,
-            isOpen ? { borderColor: COLORS.accent } : undefined,
+            {
+              borderColor: isOpen
+                ? COLORS.accent
+                : color
+                ? color
+                : COLORS.primary,
+            },
           ]}
         >
           <Text
-            style={[STYLES.fs2, isOpen ? { color: COLORS.accent } : undefined]}
+            style={[
+              STYLES.fs2,
+              {
+                color: isOpen ? COLORS.accent : color ? color : COLORS.primary,
+              },
+            ]}
           >
             {state?.text ?? state?.value ?? " "}
           </Text>
@@ -73,14 +88,26 @@ const DropDown = ({
                 STYLES.rad10,
                 STYLES.p5,
                 STYLES.mv5,
-                pressed ? { borderColor: COLORS.accent } : undefined,
+                {
+                  borderColor: pressed
+                    ? COLORS.accent
+                    : color
+                    ? color
+                    : COLORS.primary,
+                },
               ]}
             >
               {({ pressed }) => (
                 <Text
                   style={[
                     STYLES.fs2,
-                    pressed ? { color: COLORS.accent } : undefined,
+                    {
+                      color: pressed
+                        ? COLORS.accent
+                        : color
+                        ? color
+                        : COLORS.primary,
+                    },
                   ]}
                 >
                   None
@@ -98,14 +125,26 @@ const DropDown = ({
                   STYLES.rad10,
                   STYLES.p5,
                   STYLES.mv5,
-                  pressed ? { borderColor: COLORS.accent } : undefined,
+                  {
+                    borderColor: pressed
+                      ? COLORS.accent
+                      : color
+                      ? color
+                      : COLORS.primary,
+                  },
                 ]}
               >
                 {({ pressed }) => (
                   <Text
                     style={[
                       STYLES.fs2,
-                      pressed ? { color: COLORS.accent } : undefined,
+                      {
+                        color: pressed
+                          ? COLORS.accent
+                          : color
+                          ? color
+                          : COLORS.primary,
+                      },
                     ]}
                   >
                     {option.text ?? option.value}

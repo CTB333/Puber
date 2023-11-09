@@ -6,6 +6,7 @@ import useDrawerHeader from "./useDrawerHeader";
 import useEnableDrawerSwipe from "./useEnableDrawerSwipe";
 import useErrorMsg from "./useErrorMsg";
 import useFetch from "./useFetch";
+import useFilterParties from "./useFilterParties";
 import useGetAllParties from "./useGetAllParties";
 import useGetUserLocation from "./useGetUserLocation";
 import useGoBackHeader from "./useGoBackHeader";
@@ -42,4 +43,5 @@ export {
   useGetAllParties,
   useGetUserLocation,
   useHomeSnippetAnimation,
+  useFilterParties,
 };

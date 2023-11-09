@@ -11,11 +11,21 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
+    "assetBundlePatterns": ["**/*"],
+    "pulgins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow Puber to use your location."
+        }
+      ]
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.example.Puber",
+      "config": {
+        "googleMapsApiKey": "AIzaSyDZXuezXmHuoBbecqGqZz0IW0kv7S65Pes"
+      }
     },
     "android": {
       "adaptiveIcon": {

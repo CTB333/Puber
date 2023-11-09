@@ -23,22 +23,38 @@
       "userName": "Aidenwk",
       "password": "JDM",
       "id": 3
+    },
+    {
+      "firstName": "T",
+      "lastName": "T",
+      "email": "T",
+      "userName": "T",
+      "password": "T",
+      "id": 4
+    },
+    {
+      "firstName": "Ti",
+      "lastName": "Ti",
+      "email": "Ti",
+      "userName": "Ti",
+      "password": "Ti",
+      "id": 5
     }
   ],
   "parties": [
     {
-      "userId": 3,
-      "title": "Party1",
-      "desc": "Party desc",
+      "userId": 5,
+      "title": "Test",
+      "desc": "Test",
       "location": {
-        "street": " ",
-        "city": "Rochester",
+        "street": "3948 E River Rd",
+        "city": "West Henrietta",
         "state": "NY",
-        "zip": "14623",
+        "zip": "14586",
         "country": "US",
-        "fullAddress": "  Rochester NY 14623 US",
-        "lat": 43.0915814,
-        "lng": -77.6421577
+        "fullAddress": "3948 E River Rd West Henrietta NY 14586 US",
+        "lat": 43.0643316,
+        "lng": -77.6851517
       },
       "date": {
         "date": "11/8/23",
@@ -46,15 +62,31 @@
         "end": "12:00 PM",
         "dateTime": 1699495200000
       },
-      "tags": [
-        "21 +",
-        "Byob",
-        "Byow",
-        "Rager",
-        "Calm",
-        "X-Rated"
-      ],
+      "tags": [],
       "id": 1
+    },
+    {
+      "userId": 5,
+      "title": "Skidmark ",
+      "desc": "Shitting my pants rn…",
+      "location": {
+        "street": "3 Skidmore Way",
+        "city": "West Henrietta",
+        "state": "NY",
+        "zip": "14586",
+        "country": "US",
+        "fullAddress": "3 Skidmore Way West Henrietta NY 14586 US",
+        "lat": 43.07518959999999,
+        "lng": -77.6937619
+      },
+      "date": {
+        "date": "11/8/23",
+        "start": "9:00 PM",
+        "end": "12:00 PM",
+        "dateTime": 1699495200000
+      },
+      "tags": [],
+      "id": 2
     }
   ],
   "flags": []

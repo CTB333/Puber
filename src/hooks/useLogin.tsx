@@ -13,7 +13,7 @@ const initialError = {
   };
 
 const useLogin = () => {
-    const { data, isPending, success, error: fetchError, post } = useFetch();
+    const { data, isPending, success, error: fetchError, get } = useFetch();
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError, errorChange] = useOnChange(initialError);
@@ -25,10 +25,12 @@ const useLogin = () => {
     const validate = () => {
         clearError();
         if (userName.length == 0) {
+          console.log("error name")
           setError((prev) => ({ ...prev, userName: "Missing user name" }));
           return false;
         }
         if (password.length == 0) {
+          console.log("error password")
           setError((prev) => ({ ...prev, password: "Missing password" }));
           return false;
         }
@@ -37,6 +39,11 @@ const useLogin = () => {
 
     const submit = () => {
         if (!validate()) return;
+        //return true;
+        console.log("here");
+        get('users');
+        console.log(data);
+        console.log(success);
         return true;
       };
 

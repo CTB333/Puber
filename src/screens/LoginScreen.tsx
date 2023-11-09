@@ -20,6 +20,7 @@ import { SignUpScreenProps } from "../navigation";
 import { useUser } from "../providers";
 
 
+
 const LoginScreen = ({ navigation }: LoginScreenProps) => {
   useDefaultHeader();
   const { user } = useUser();
@@ -39,10 +40,21 @@ const LoginScreen = ({ navigation }: LoginScreenProps) => {
     navigation.replace(`SignUp`);
   };
 
+  // const toDrawers = () => {
+  //   successMessage(`Welcome`, `${user?.firstName}`);
+  //   navigation.replace(`Drawer`, {
+  //     screen: "Tabs",
+  //     params: { screen: "Home" },
+  //   });
+  // }
+
+  useErrorMsg(error, errorChange);
+
   const successMessage = useSuccessMessage();
 
   useOnSuccess(() => {
-    //successMessage(`Welcome`, `${user?.firstName}`);
+    console.log("here")
+    successMessage(`Welcome`, `${user?.firstName}`);
     navigation.replace(`Drawer`, {
       screen: "Tabs",
       params: { screen: "Home" },
@@ -101,8 +113,8 @@ const LoginScreen = ({ navigation }: LoginScreenProps) => {
             { justifyContent: "space-evenly" },
           ]}
         >
-          <Button disabled={isPending} onPress={submit} text="Login" />
-          <ActionButton disabled={isPending} onPress={toSignUp} text="Sign Up" />
+          <ActionButton disabled={isPending} onPress={submit} text="Login" />
+          <Button disabled={isPending} onPress={toSignUp} text="Sign Up" />
         </View>
       </View>
     </SafeAreaView>

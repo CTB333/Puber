@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { Party } from "../interfaces";
 import useFetch from "./useFetch";
 import { stringify } from "../utils";
+import useOnChange from "./useOnChange";
 
 const useGetAllParties = (deps?: any[]) => {
   const { data, isPending, get } = useFetch();
-  const [parties, setParties] = useState<Party[]>([]);
+  const [parties, setParties, partiesChange] = useOnChange<Party[]>([]);
 
   useEffect(() => {
     getParties();
@@ -20,7 +21,7 @@ const useGetAllParties = (deps?: any[]) => {
     get(`parties`);
   };
 
-  return { parties, loading: isPending };
+  return { parties, loading: isPending, partiesChange };
 };
 
 export default useGetAllParties;

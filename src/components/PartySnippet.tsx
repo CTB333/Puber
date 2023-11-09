@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import { Party } from "../interfaces";
+import { Party, PartyDistance } from "../interfaces";
 import STYLES from "../styles";
 import PressOpaque from "./PressOpaque";
 import Icon from "./Icon";
@@ -9,9 +9,10 @@ import { dateToString } from "../utils";
 
 type PartySnippetProps = {
   party: Party;
+  distance?: PartyDistance;
 };
 
-const PartySnippet = ({ party }: PartySnippetProps) => {
+const PartySnippet = ({ party, distance }: PartySnippetProps) => {
   const stars = [0, 0, 0, 0, 0];
   return (
     <PressOpaque
@@ -35,7 +36,11 @@ const PartySnippet = ({ party }: PartySnippetProps) => {
         <Text style={[STYLES.fs1, STYLES.colorWhite]}>
           {dateToString(new Date(party.date.dateTime))}
         </Text>
-        <Text style={[STYLES.fs1, STYLES.colorWhite]}>5 Miles Away</Text>
+        {distance ? (
+          <Text style={[STYLES.fs1, STYLES.colorWhite]}>
+            {distance.distance} Miles Away
+          </Text>
+        ) : null}
 
         <View style={[STYLES.row]}>
           {stars.map((_S, index) => {

@@ -55,3 +55,8 @@ export type PartyLocation = Address & {
   lat: number;
   lng: number;
 };
+
+export type PartyDistance = {
+  distance: number;
+  partyId: number;
+};

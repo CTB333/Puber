@@ -3,6 +3,7 @@ import STYLES from "../styles";
 import {
   useDrawerHeader,
   useEnableDrawerSwipe,
+  useGetAllParties,
   useGetAllUsers,
 } from "../hooks";
 import { useSetHeader } from "../hooks";
@@ -10,6 +11,7 @@ import { UserSnippet } from "../components";
 import { useUser } from "../providers";
 import { ListScreenProps } from "../navigation";
 import { User } from "../interfaces";
+import { ScrollView } from "react-native-gesture-handler";
 
 const ListScreen = ({ navigation }: ListScreenProps) => {
   useEnableDrawerSwipe();
@@ -17,6 +19,7 @@ const ListScreen = ({ navigation }: ListScreenProps) => {
 
   // const { user } = useUser();
   const { users } = useGetAllUsers();
+  const { parties } = useGetAllParties();
 
   const toUser = (user: User) => {
     navigation.navigate("User", { user });
@@ -24,12 +27,17 @@ const ListScreen = ({ navigation }: ListScreenProps) => {
 
   return (
     <View style={[STYLES.page, STYLES.center]}>
-      <Text>ListScreen</Text>
-      {users.map((user) => {
-        return (
-          <UserSnippet onPress={() => toUser(user)} key={user.id} user={user} />
-        );
-      })}
+      <ScrollView style={[STYLES.width]}>
+        <Text>ListScreen</Text>
+        <ScrollView horizontal style={[STYLES.width]}>
+          {users.map((user) => {
+            return (
+              <UserSnippet onPress={() => toUser(user)} key={user.id} user={user} />
+            );
+          })}
+        </ScrollView>
+      </ScrollView>
+      
     </View>
   );
 };

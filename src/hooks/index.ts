@@ -20,6 +20,7 @@ import useSelect from "./useSelect";
 import useSetHeader from "./useSetHeader";
 import useSignUp from "./useSignUp";
 import useSuccessMessage from "./useSuccessMessage";
+import useLogin from "./useLogin";
 
 export {
   useEnableDrawerSwipe,
@@ -41,6 +42,7 @@ export {
   useAddParty,
   useModalComponent,
   useGetAllParties,
+  useLogin,
   useGetUserLocation,
   useHomeSnippetAnimation,
   useFilterParties,

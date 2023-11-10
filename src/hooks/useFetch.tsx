@@ -43,6 +43,7 @@ const useFetch = (): UseFetchResult => {
       let json = await res.json();
       successCall(json);
     } catch (e: any) {
+      console.log(e);
       err(e.message);
     }
   };

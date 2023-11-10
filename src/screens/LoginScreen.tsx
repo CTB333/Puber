@@ -33,9 +33,7 @@ const LoginScreen = ({ navigation }: LoginScreenProps) => {
     userName,
     setUserName,
     password,
-    setPassword,
-    validateUser,
-    correctUser
+    setPassword
   } = useLogin();
 
   const toSignUp = () => {
@@ -55,14 +53,11 @@ const LoginScreen = ({ navigation }: LoginScreenProps) => {
   const successMessage = useSuccessMessage();
 
   useOnSuccess(() => {
-    validateUser()
-    if (correctUser== true){
-      successMessage(`Welcome`, `${user?.firstName}`);
-      navigation.replace(`Drawer`, {
-      screen: "Tabs",
-      params: { screen: "Home" },
-      });
-    }
+    successMessage(`Welcome`, `${user?.firstName}`);
+    navigation.replace(`Drawer`, {
+    screen: "Tabs",
+    params: { screen: "Home" },
+    });
   }, success);
 
   return (

@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useFetch from "./useFetch";
 import useOnChange from "./useOnChange";
+import { stringify } from "../utils";
+import { useUser } from "../providers";
+import useRememberUser from "./useRememberUser";
 
 const initialError = {
     firstName: "",
@@ -13,11 +16,23 @@ const initialError = {
   };
 
 const useLogin = () => {
-    const { data, isPending, success, error: fetchError, get } = useFetch();
+    const { data, isPending, error: fetchError, get } = useFetch();
+    const {setUser} = useUser();
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
+    const {store} = useRememberUser();
+    const [success, setSuccess] = useState(false);
     const [error, setError, errorChange] = useOnChange(initialError);
     const [correctUser, setCorrectUser] = useState("");
+
+    useEffect(() => {
+      if(!fetchError) return
+      setError((prev) => ({ ...prev, server: fetchError}));
+    }, [stringify([fetchError])])
+
+    useEffect(() => {
+      validateUser();
+    }, [stringify(data)])
 
     const clearError = () => {
         setError(initialError);
@@ -26,12 +41,10 @@ const useLogin = () => {
     const validate = () => {
         clearError();
         if (userName.length == 0) {
-          console.log("error name")
           setError((prev) => ({ ...prev, userName: "Missing user name" }));
           return false;
         }
         if (password.length == 0) {
-          console.log("error password")
           setError((prev) => ({ ...prev, password: "Missing password" }));
           return false;
         }
@@ -39,16 +52,23 @@ const useLogin = () => {
     };
 
     const validateUser = () =>{
-      for(const users in data){
-        if(users.userName == userName){
-          if(users.password == password){
-            return true;
-          }
+      if(!data){
+        return
+      }
+      for(const user of data){
+        if(user.userName == userName && user.password == password){
+          setUser(user)
+          store(user.id)
+          setSuccess(true)
+          return
         }
       }
+
+      setError(prev => ({...prev, server: `Username and Password don't match`}))
     }
 
     const submit = () => {
+        setSuccess(false)
         if (!validate()) return;
         get(`users`)
       };
@@ -63,8 +83,6 @@ const useLogin = () => {
         setUserName,
         password,
         setPassword,
-        validateUser,
-        correctUser
       };
 }
 

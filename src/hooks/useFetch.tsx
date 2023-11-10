@@ -42,7 +42,6 @@ const useFetch = (): UseFetchResult => {
         throw new Error(`Internal Server Error: ${res.status}`);
       let json = await res.json();
       successCall(json);
-      console.log(json);
     } catch (e: any) {
       console.log(e);
       err(e.message);

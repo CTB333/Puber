@@ -5,6 +5,9 @@ export type User = {
   email: string;
   userName: string;
   password: string;
+  rsvpStatus: boolean;
+  notiStatus: boolean;
+  rating: number;
 };
 
 export type UserData = {

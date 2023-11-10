@@ -18,6 +18,9 @@ const STYLES = StyleSheet.create({
   even: {
     justifyContent: "space-evenly",
   },
+  space: {
+    justifyContent: "space-between",
+  },
   page: {
     width: "100%",
     height: "100%",

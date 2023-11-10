@@ -1,12 +1,37 @@
 {
   "users": [
     {
-      "firstName": "CTB",
-      "lastName": "CTB",
-      "email": "CTB",
       "userName": "CTB",
+      "email": "CTB",
+      "firstName": "Colin",
+      "lastName": "Tondreau",
       "password": "CTB",
+      "rsvpStatus": true,
+      "notiStatus": false,
+      "rating": 5,
       "id": 1
+    },
+    {
+      "firstName": "Testname",
+      "lastName": "Testlastname",
+      "email": "Test123@gmail.com",
+      "userName": "Test name",
+      "password": "123",
+      "rsvpStatus": true,
+      "notiStatus": true,
+      "rating": 2,
+      "id": 2
+    },
+    {
+      "firstName": "Tester",
+      "lastName": "Tester",
+      "email": "Tester",
+      "userName": "Tester",
+      "password": "Tester",
+      "rsvpStatus": true,
+      "notiStatus": true,
+      "rating": 5,
+      "id": 3
     }
   ],
   "parties": [

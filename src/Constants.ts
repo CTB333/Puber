@@ -192,7 +192,7 @@ const MAPSTYLE = [
 const CONSTANTS = {
   ScreenHieght: height,
   ScreenWidth: width,
-  URL: "https://466f-2620-8d-8000-1064-9051-c28a-fd6f-c20f.ngrok-free.app/", // Must include '/' at the end of url
+  URL: "https://dc5b-2620-8d-8000-106c-1df6-68f0-468f-e665.ngrok-free.app/", // Must include '/' at the end of url
   GeoCodeURL: "https://maps.googleapis.com/maps/api/geocode/json?address=",
   DistanceURL: (destinations: string, origin: string, key: string) =>
     `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&destinations=${destinations}&origins=${origin}&key=${key}`,

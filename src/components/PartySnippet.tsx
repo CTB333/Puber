@@ -6,14 +6,21 @@ import Icon from "./Icon";
 import CONSTANTS from "../Constants";
 import COLORS from "../colors";
 import { dateToString } from "../utils";
+import StarRow from "./StartRow";
 
 type PartySnippetProps = {
+  primaryColor?: boolean;
+  lessOpaque?: boolean;
   party: Party;
   distance?: PartyDistance;
 };
 
-const PartySnippet = ({ party, distance }: PartySnippetProps) => {
-  const stars = [0, 0, 0, 0, 0];
+const PartySnippet = ({
+  party,
+  distance,
+  primaryColor,
+  lessOpaque,
+}: PartySnippetProps) => {
   return (
     <PressOpaque
       style={(pressed) => [
@@ -21,12 +28,16 @@ const PartySnippet = ({ party, distance }: PartySnippetProps) => {
         STYLES.width,
         STYLES.rad15,
         STYLES.p15,
-        STYLES.bgAccent,
+        pressed || !primaryColor ? STYLES.bgAccent : STYLES.bgPrimary,
         {
-          opacity: pressed ? 0.9 : 1,
           justifyContent: "space-between",
           height: CONSTANTS.ScreenHieght / 6,
         },
+        lessOpaque
+          ? {
+              opacity: pressed ? 0.75 : 1,
+            }
+          : undefined,
       ]}
     >
       <View style={[STYLES.even]}>
@@ -42,13 +53,7 @@ const PartySnippet = ({ party, distance }: PartySnippetProps) => {
           </Text>
         ) : null}
 
-        <View style={[STYLES.row]}>
-          {stars.map((_S, index) => {
-            return (
-              <Icon key={index} size={35} color={COLORS.white} name="star" />
-            );
-          })}
-        </View>
+        <StarRow />
       </View>
       <View style={[STYLES.center]}>
         <Icon size={35} color={COLORS.white} name="right" />

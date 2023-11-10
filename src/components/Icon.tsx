@@ -42,6 +42,10 @@ const IconList = {
   starFill: (props: BaseIconProps) => <AntDesign {...props} name="star" />,
   upload: (props: BaseIconProps) => <Feather {...props} name="upload" />,
   flag: (props: BaseIconProps) => <Ionicons {...props} name="flag" />,
+  save: (props: BaseIconProps) => <MaterialIcons {...props} name="save" />,
+  userLocation: (props: BaseIconProps) => (
+    <MaterialIcons {...props} name="my-location" />
+  ),
 };
 
 type IconName =
@@ -59,7 +63,9 @@ type IconName =
   | "star"
   | "starFill"
   | "upload"
-  | "flag";
+  | "flag"
+  | "save"
+  | "userLocation";
 
 export type IconProps = {
   name: IconName;

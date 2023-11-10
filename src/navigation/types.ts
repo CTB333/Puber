@@ -9,6 +9,7 @@ import {
 import { StackScreenProps } from "@react-navigation/stack";
 import { DrawerScreenProps } from "@react-navigation/drawer";
 import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
+import { User } from "../interfaces";
 
 export type RootStackParamBase = {
   Drawer: NavigatorScreenParams<DrawerNavParamBase>;
@@ -17,7 +18,9 @@ export type RootStackParamBase = {
   SignUp: undefined;
   DriverApplication: undefined;
   Account: undefined;
-  User: undefined;
+  User: {
+    user: User;
+  };
   RedFlagDetail: undefined;
   RedFlagAdd: undefined;
   PartyDetail: undefined;

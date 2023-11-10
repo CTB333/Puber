@@ -4,7 +4,7 @@ import { usePopUp } from "../providers";
 const useSuccessMessage = () => {
   const { setPopUp, flash } = usePopUp();
 
-  const showSuccess = (title: string, subTitle: string) => {
+  const showSuccess = (title: string, subTitle?: string) => {
     setPopUp({
       popUpStyle: {
         backgroundColor: COLORS.accent,

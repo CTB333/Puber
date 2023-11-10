@@ -7,6 +7,14 @@
       "userName": "CTB",
       "password": "CTB",
       "id": 1
+    },
+    {
+      "firstName": "Testname",
+      "lastName": "Testlastname",
+      "email": "Test123@gmail.com",
+      "userName": "Test name",
+      "password": "123",
+      "id": 2
     }
   ],
   "parties": [

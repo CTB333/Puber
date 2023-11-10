@@ -17,6 +17,7 @@ const useLogin = () => {
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError, errorChange] = useOnChange(initialError);
+    const [correctUser, setCorrectUser] = useState("");
 
     const clearError = () => {
         setError(initialError);
@@ -37,14 +38,19 @@ const useLogin = () => {
         return true;
     };
 
+    const validateUser = () =>{
+      for(const users in data){
+        if(users.userName == userName){
+          if(users.password == password){
+            return true;
+          }
+        }
+      }
+    }
+
     const submit = () => {
         if (!validate()) return;
-        //return true;
-        console.log("here");
-        get('users');
-        console.log(data);
-        console.log(success);
-        return true;
+        get(`users`)
       };
 
     return {
@@ -56,7 +62,9 @@ const useLogin = () => {
         userName,
         setUserName,
         password,
-        setPassword
+        setPassword,
+        validateUser,
+        correctUser
       };
 }
 

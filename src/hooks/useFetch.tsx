@@ -32,22 +32,17 @@ const useFetch = (): UseFetchResult => {
   };
 
   const get = async (url: string, baseURL?: string) => {
-    console.log("outside try")
     try {
-      console.log("inside try")
       let controller = createAbortController();
-      console.log("1");
       let res = await fetch(toUrl(url, baseURL), {
         headers: { Accept: "application/json" },
         signal: controller.signal,
       });
-      console.log("2");
       if (!allowedStatusCodes.includes(res.status))
         throw new Error(`Internal Server Error: ${res.status}`);
       let json = await res.json();
-      console.log("3");
-      console.log("json: "+json);
       successCall(json);
+      console.log(json);
     } catch (e: any) {
       console.log(e);
       err(e.message);

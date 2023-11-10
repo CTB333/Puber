@@ -21,6 +21,7 @@ import useSetHeader from "./useSetHeader";
 import useSignUp from "./useSignUp";
 import useSuccessMessage from "./useSuccessMessage";
 import useLogin from "./useLogin";
+import useGetAllUsers from "./useGetAllUsers";
 
 export {
   useEnableDrawerSwipe,
@@ -46,4 +47,5 @@ export {
   useGetUserLocation,
   useHomeSnippetAnimation,
   useFilterParties,
+  useGetAllUsers,
 };

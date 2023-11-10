@@ -23,26 +23,7 @@ const useFetch = (): UseFetchResult => {
   const [abort, setAbort] = useState<AbortController | null>(null);
   const [tOut, setTOut] = useState<NodeJS.Timeout | null>(null);
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     fetch(url)
-  //       .then((res) => {
-  //         if (!res.ok) {
-  //           throw Error("Error fetching users data");
-  //         }
-  //         return res.json();
-  //       })
-  //       .then((data) => {
-  //         setData(data);
-  //         setIsPending(false);
-  //         setError(null);
-  //       })
-  //       .catch((err) => {
-  //         setIsPending(false);
-  //         setError(err.message);
-  //       });
-  //   }, 1000);
-  // }, [url]);
+  const allowedStatusCodes = [200, 201];
 
   const toUrl = (url: string, baseURL?: string) => {
     if (!baseURL) return CONSTANTS.URL + url;
@@ -61,6 +42,8 @@ const useFetch = (): UseFetchResult => {
         signal: controller.signal,
       });
       console.log("2");
+      if (!allowedStatusCodes.includes(res.status))
+        throw new Error(`Internal Server Error: ${res.status}`);
       let json = await res.json();
       console.log("3");
       console.log("json: "+json);
@@ -83,6 +66,8 @@ const useFetch = (): UseFetchResult => {
         signal: controller.signal,
         body: stringify(data),
       });
+      if (!allowedStatusCodes.includes(res.status))
+        throw new Error(`Internal Server Error: ${res.status}`);
       let json = await res.json();
       successCall(json);
     } catch (e: any) {
@@ -102,6 +87,8 @@ const useFetch = (): UseFetchResult => {
         signal: controller.signal,
         body: stringify(data),
       });
+      if (!allowedStatusCodes.includes(res.status))
+        throw new Error(`Internal Server Error: ${res.status}`);
       let json = await res.json();
       successCall(json);
     } catch (e: any) {
@@ -116,6 +103,8 @@ const useFetch = (): UseFetchResult => {
         method: "DELETE",
         signal: controller.signal,
       });
+      if (!allowedStatusCodes.includes(res.status))
+        throw new Error(`Internal Server Error: ${res.status}`);
       let json = await res.json();
       successCall(json);
     } catch (e: any) {

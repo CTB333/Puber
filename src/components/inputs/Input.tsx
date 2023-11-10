@@ -8,9 +8,16 @@ type InputProps = {
   disabled?: boolean;
   state: string;
   setState: (val: string) => void;
+  color?: string;
 };
 
-const Input = ({ placeholder, disabled, state, setState }: InputProps) => {
+const Input = ({
+  placeholder,
+  disabled,
+  state,
+  setState,
+  color,
+}: InputProps) => {
   const [isFocused, focus, unFocus] = useOpen();
   return (
     <View style={[STYLES.width]}>
@@ -18,8 +25,9 @@ const Input = ({ placeholder, disabled, state, setState }: InputProps) => {
         style={[
           STYLES.mh10,
           STYLES.fs1,
-          STYLES.colorPrimary,
-          isFocused ? { color: COLORS.accent } : undefined,
+          {
+            color: isFocused ? COLORS.accent : color ? color : COLORS.primary,
+          },
         ]}
       >
         {placeholder ?? "PlaceHolder"}
@@ -36,9 +44,14 @@ const Input = ({ placeholder, disabled, state, setState }: InputProps) => {
           STYLES.p5,
           STYLES.colorPrimary,
           styles.container,
-          isFocused
-            ? { borderColor: COLORS.accent, color: COLORS.accent }
-            : undefined,
+          {
+            color: isFocused ? COLORS.accent : color ? color : COLORS.primary,
+            borderColor: isFocused
+              ? COLORS.accent
+              : color
+              ? color
+              : COLORS.primary,
+          },
         ]}
       />
     </View>

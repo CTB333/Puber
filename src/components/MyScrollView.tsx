@@ -3,14 +3,20 @@ import { ScrollView, StyleProp, View, ViewStyle } from "react-native";
 
 type MyScrollViewProps = {
   children: React.ReactNode;
-  styles: StyleProp<ViewStyle>;
+  styles?: StyleProp<ViewStyle>;
+  showIndicator?: boolean;
 };
 
-const MyScrollView = ({ children, styles }: MyScrollViewProps) => {
+const MyScrollView = ({
+  children,
+  styles,
+  showIndicator,
+}: MyScrollViewProps) => {
   const [height, setHeight] = useState(0);
 
   return (
     <ScrollView
+      showsVerticalScrollIndicator={showIndicator}
       style={
         Array.isArray(styles)
           ? [...styles, height != 0 ? { maxHeight: height } : undefined]

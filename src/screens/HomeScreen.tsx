@@ -1,45 +1,104 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
+import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
+import Animated from "react-native-reanimated";
 import STYLES from "../styles";
-import { Button, DrawerSceneWrapper, DropDown, Input } from "../components";
+import { Loading, PartySnippet } from "../components";
 import { HomeScreenProps } from "../navigation";
 import {
   useDrawerHeader,
   useEnableDrawerSwipe,
-  useGetAllParties,
-  useSelect,
-  useSetHeader,
+  useErrorMsg,
+  useFilterParties,
+  useGetUserLocation,
+  useHomeSnippetAnimation,
 } from "../hooks";
-import { useState } from "react";
-import { stringify } from "../utils";
-import { ScrollView } from "react-native-gesture-handler";
+import CONSTANTS from "../Constants";
+import MarkerMed from "../assets/MarkerMed.png";
+import MarkerBig from "../assets/MarkerBig.png";
 
 const HomeScreen = ({ navigation }: HomeScreenProps) => {
   useEnableDrawerSwipe();
   useDrawerHeader();
 
-  const { parties } = useGetAllParties([navigation.isFocused()]);
+  const { parties, distances, userLocation } = useFilterParties([
+    navigation.isFocused(),
+  ]);
+
+  const { selected, animationStyle, onSelect } =
+    useHomeSnippetAnimation(parties);
 
   return (
     <View style={[STYLES.page, STYLES.center, STYLES.p30]}>
-      <ScrollView
+      <View
         style={[
           STYLES.flex,
           STYLES.rad15,
           STYLES.bgPrimary,
           STYLES.borderWhite,
           STYLES.width,
-          STYLES.p10,
           STYLES.shadow,
+          { overflow: "hidden" },
         ]}
       >
-        {parties.map((party) => {
-          return (
-            <View key={party.id} style={[{ marginBottom: 15 }]}>
-              <Text style={[STYLES.colorWhite]}>{stringify(party)}</Text>
-            </View>
-          );
-        })}
-      </ScrollView>
+        {!userLocation ? (
+          <View style={[STYLES.flex, STYLES.center]}>
+            <Loading />
+          </View>
+        ) : (
+          <View style={[STYLES.relative, STYLES.width, STYLES.height]}>
+            <MapView
+              provider={PROVIDER_GOOGLE}
+              showsUserLocation={true}
+              style={[STYLES.width, STYLES.height]}
+              customMapStyle={CONSTANTS.MapStyle}
+              initialRegion={{
+                latitude: userLocation.lat,
+                longitude: userLocation.lng,
+                longitudeDelta: 0.25,
+                latitudeDelta: 0.25,
+              }}
+            >
+              {parties.map((party, index) => {
+                const coordinate = {
+                  latitude: party.location.lat,
+                  longitude: party.location.lng,
+                };
+                const isSelected = selected?.id == party.id;
+                return (
+                  <Marker
+                    onPress={() => onSelect(party)}
+                    icon={isSelected ? MarkerBig : MarkerMed}
+                    key={index}
+                    coordinate={coordinate}
+                  />
+                );
+              })}
+            </MapView>
+            <Animated.View
+              style={[
+                STYLES.absolute,
+                STYLES.width,
+                STYLES.center,
+                STYLES.ph15,
+                animationStyle,
+                {
+                  bottom: 15,
+                  left: 0,
+                },
+              ]}
+            >
+              {selected ? (
+                <PartySnippet
+                  party={selected}
+                  distance={distances.find(
+                    (distance) => selected.id === distance.partyId
+                  )}
+                />
+              ) : null}
+            </Animated.View>
+          </View>
+        )}
+      </View>
     </View>
   );
 };

@@ -1,13 +1,15 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import STYLES from "../../styles";
+import COLORS from "../../colors";
 
 type RadioButtonProps = {
   onPress?: () => void;
   enabled?: boolean;
   text: string;
+  color?: string;
 };
 
-const RadioButton = ({ onPress, enabled, text }: RadioButtonProps) => {
+const RadioButton = ({ onPress, enabled, text, color }: RadioButtonProps) => {
   return (
     <Pressable
       onPress={onPress}
@@ -20,15 +22,21 @@ const RadioButton = ({ onPress, enabled, text }: RadioButtonProps) => {
         STYLES.border,
         {
           justifyContent: "space-between",
+          borderColor: color ? color : COLORS.primary,
         },
         pressed ? styles.opacity : undefined,
       ]}
     >
-      <Text style={[STYLES.fs2, STYLES.colorPrimary]}>{text}</Text>
+      <Text style={[STYLES.fs2, { color: color ? color : COLORS.primary }]}>
+        {text}
+      </Text>
       <View
         style={[
           STYLES.border,
           enabled ? STYLES.bgAccent : undefined,
+          {
+            borderColor: color ? color : COLORS.primary,
+          },
           styles.circle,
         ]}
       />

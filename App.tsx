@@ -8,6 +8,7 @@ import {
   HeaderProvider,
   ModalProvider,
   PopUpProvider,
+  SearchProvider,
   UserProvider,
 } from "./src/providers";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -26,9 +27,11 @@ const App = () => {
         <ModalProvider>
           <PopUpProvider>
             <HeaderProvider>
-              <NavigationContainer>
-                <RootStack />
-              </NavigationContainer>
+              <SearchProvider>
+                <NavigationContainer>
+                  <RootStack />
+                </NavigationContainer>
+              </SearchProvider>
             </HeaderProvider>
           </PopUpProvider>
         </ModalProvider>

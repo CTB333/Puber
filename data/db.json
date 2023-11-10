@@ -1,14 +1,69 @@
 {
   "users": [
     {
-      "firstName": "C",
-      "lastName": "C",
-      "email": "C",
-      "userName": "C",
-      "password": "C",
+      "firstName": "CTB",
+      "lastName": "CTB",
+      "email": "CTB",
+      "userName": "CTB",
+      "password": "CTB",
       "id": 1
     }
   ],
-  "parties": [],
+  "parties": [
+    {
+      "userId": 1,
+      "title": "CTB KickOff",
+      "desc": "Kick the baby… then hang him up and us as  piniata!",
+      "location": {
+        "street": "65 Marine Dr",
+        "city": "Buffalo",
+        "state": "NY",
+        "zip": "14228",
+        "country": "US",
+        "fullAddress": "65 Marine Dr Buffalo NY 14228 US",
+        "lat": 43.028123,
+        "lng": -78.79272739999999
+      },
+      "date": {
+        "date": "11/15/23",
+        "start": "9:00 PM",
+        "end": "12:00 PM",
+        "dateTime": 1700100000000
+      },
+      "tags": [
+        "X-Rated",
+        "Rager",
+        "Byob"
+      ],
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "title": "Roch Crotch",
+      "desc": "Crotch kicks",
+      "location": {
+        "street": "330 Rock Beach Rd",
+        "city": "Rochester",
+        "state": "NY",
+        "zip": "14617",
+        "country": "US",
+        "fullAddress": "330 Rock Beach Rd Rochester NY 14617 US",
+        "lat": 43.2485363,
+        "lng": -77.58818049999999
+      },
+      "date": {
+        "date": "11/9/23",
+        "start": "9:00 PM",
+        "end": "12:00 PM",
+        "dateTime": 1699581600000
+      },
+      "tags": [
+        "21 +",
+        "Byob",
+        "Byow"
+      ],
+      "id": 2
+    }
+  ],
   "flags": []
 }

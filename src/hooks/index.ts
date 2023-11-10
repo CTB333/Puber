@@ -6,8 +6,11 @@ import useDrawerHeader from "./useDrawerHeader";
 import useEnableDrawerSwipe from "./useEnableDrawerSwipe";
 import useErrorMsg from "./useErrorMsg";
 import useFetch from "./useFetch";
+import useFilterParties from "./useFilterParties";
 import useGetAllParties from "./useGetAllParties";
+import useGetUserLocation from "./useGetUserLocation";
 import useGoBackHeader from "./useGoBackHeader";
+import useHomeSnippetAnimation from "./useHomeSnippetAnimation";
 import useLogout from "./useLogout";
 import useModalComponent from "./useModalComponent";
 import useOnSuccess from "./useOnSuccess";
@@ -40,4 +43,7 @@ export {
   useModalComponent,
   useGetAllParties,
   useLogin,
+  useGetUserLocation,
+  useHomeSnippetAnimation,
+  useFilterParties,
 };

@@ -3,6 +3,7 @@ import useOpen from "../../hooks/useOpen";
 import STYLES from "../../styles";
 import COLORS from "../../colors";
 import Collapsable from "../Collapsable";
+import Icon from "../Icon";
 
 export type DropDownOptionType = {
   key: string;
@@ -56,6 +57,8 @@ const DropDown = ({
             STYLES.border,
             STYLES.rad10,
             STYLES.p5,
+            STYLES.row,
+            STYLES.space,
             {
               borderColor: isOpen
                 ? COLORS.accent
@@ -75,6 +78,11 @@ const DropDown = ({
           >
             {state?.text ?? state?.value ?? " "}
           </Text>
+          <Icon
+            name={isOpen ? "up" : "down"}
+            size={25}
+            color={isOpen ? COLORS.accent : color ? color : COLORS.primary}
+          />
         </View>
       </Pressable>
 

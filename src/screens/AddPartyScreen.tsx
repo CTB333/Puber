@@ -90,6 +90,7 @@ const AddPartyScreen = ({ navigation }: AddPartyScreenProps) => {
           state={country}
           setState={setCountry}
         />
+        <View style={{ marginBottom: 15 }} />
         <RadioButton
           enabled={hideAddress}
           text={"Hide Address"}
@@ -118,7 +119,7 @@ const AddPartyScreen = ({ navigation }: AddPartyScreenProps) => {
           );
         })}
 
-        <ScrollFooterSpace divideBy={4} />
+        <ScrollFooterSpace divideBy={6} />
       </ScrollView>
       <View style={[STYLES.center]}>
         <ActionButton disabled={loading} text="Submit" onPress={submit} />

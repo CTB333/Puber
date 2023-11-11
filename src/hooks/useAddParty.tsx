@@ -34,6 +34,7 @@ const useAddParty = () => {
   const [date, setDate] = useState(dateToString(new Date()));
   const [startTime, setStartTime] = useState("9:00 PM");
   const [endTime, setEndTime] = useState("12:00 PM");
+  const [hideAddress, setHideAddress] = useState(false);
   const [tags, setTags] = useState<PartyTag[]>([]);
   const {
     partyLocation,
@@ -202,6 +203,9 @@ const useAddParty = () => {
         dateTime: dateTime.getTime(),
       },
       tags,
+      drivers: [],
+      guests: [],
+      hideAddress,
     };
 
     post(`parties`, party);
@@ -241,6 +245,8 @@ const useAddParty = () => {
     setState,
     country,
     setCountry,
+    hideAddress,
+    setHideAddress,
     tags,
     setTags: selectTag,
   };

@@ -6,6 +6,8 @@ import {
 } from "react-native-reanimated";
 import { Party } from "../interfaces";
 import useSelect from "./useSelect";
+import { useEffect } from "react";
+import { stringify } from "../utils";
 
 const useHomeSnippetAnimation = (parties: Party[]) => {
   const { select, selected, unselect } = useSelect<Party>({
@@ -33,6 +35,11 @@ const useHomeSnippetAnimation = (parties: Party[]) => {
       unselect();
     }, 150);
   };
+
+  useEffect(() => {
+    if (selected && !parties.find((party) => party.id == selected.id))
+      onSelect(selected);
+  }, [stringify(parties)]);
 
   return {
     selected,

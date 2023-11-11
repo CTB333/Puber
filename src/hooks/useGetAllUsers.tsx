@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import useFetch from "./useFetch";
 import { stringify } from "../utils";
 import { User } from "../interfaces";
+import useOnChange from "./useOnChange";
 
 const useGetAllUsers = () => {
   const { data, isPending, get } = useFetch();
-  const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers, usersChange] = useOnChange<User[]>([]);
 
   useEffect(() => {
     recieveData();
@@ -27,6 +28,7 @@ const useGetAllUsers = () => {
   return {
     success: isPending,
     users,
+    usersChange,
   };
 };
 

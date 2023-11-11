@@ -6,9 +6,11 @@ export type ButtonProps = {
   onPress?: () => void;
   text?: string;
   disabled?: boolean;
+  bold?: boolean;
+  big?: boolean;
 };
 
-const Button = ({ onPress, text, disabled }: ButtonProps) => {
+const Button = ({ onPress, text, disabled, bold, big }: ButtonProps) => {
   return (
     <Pressable
       disabled={disabled}
@@ -19,9 +21,18 @@ const Button = ({ onPress, text, disabled }: ButtonProps) => {
         STYLES.rad15,
         styles.container,
         pressed || disabled ? styles.opacity : undefined,
+        bold ? { borderWidth: 2 } : undefined,
       ]}
     >
-      <Text style={[STYLES.fs1, STYLES.colorPrimary]}>{text ?? "Button"}</Text>
+      <Text
+        style={[
+          big ? STYLES.fs2 : STYLES.fs1,
+          STYLES.colorPrimary,
+          bold ? STYLES.bold : undefined,
+        ]}
+      >
+        {text ?? "Button"}
+      </Text>
     </Pressable>
   );
 };

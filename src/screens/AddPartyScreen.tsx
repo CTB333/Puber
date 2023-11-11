@@ -55,6 +55,8 @@ const AddPartyScreen = ({ navigation }: AddPartyScreenProps) => {
     setState,
     country,
     setCountry,
+    hideAddress,
+    setHideAddress,
     tags,
     setTags,
   } = useAddParty();
@@ -87,6 +89,11 @@ const AddPartyScreen = ({ navigation }: AddPartyScreenProps) => {
           placeholder="Country"
           state={country}
           setState={setCountry}
+        />
+        <RadioButton
+          enabled={hideAddress}
+          text={"Hide Address"}
+          onPress={() => setHideAddress((prev) => !prev)}
         />
 
         <FormHeader title="Date Info" />

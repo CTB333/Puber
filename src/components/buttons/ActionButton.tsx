@@ -3,7 +3,7 @@ import STYLES from "../../styles";
 import COLORS from "../../colors";
 import { ButtonProps } from "./Button";
 
-const ActionButton = ({ onPress, text, disabled }: ButtonProps) => {
+const ActionButton = ({ onPress, text, disabled, bold, big }: ButtonProps) => {
   return (
     <Pressable
       disabled={disabled}
@@ -14,9 +14,17 @@ const ActionButton = ({ onPress, text, disabled }: ButtonProps) => {
         STYLES.rad15,
         styles.container,
         pressed || disabled ? styles.opacity : undefined,
+        // bold ? { borderWidth: 2 } : undefined,
       ]}
     >
-      <Text style={[STYLES.fs1, STYLES.colorWhite]}>
+      <Text
+        style={[
+          big ? STYLES.fs2 : STYLES.fs1,
+          ,
+          STYLES.colorWhite,
+          bold ? STYLES.bold : undefined,
+        ]}
+      >
         {text ?? "Action Button"}
       </Text>
     </Pressable>

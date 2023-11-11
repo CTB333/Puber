@@ -22,7 +22,7 @@ export type RootStackParamBase = {
     user: User;
   };
   RedFlagDetail: undefined;
-  RedFlagAdd: undefined;
+  RedFlagAdd: { user: User };
   PartyDetail: {
     party: Party;
   };

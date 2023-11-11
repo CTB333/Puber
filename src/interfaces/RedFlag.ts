@@ -1,12 +1,14 @@
 export type RedFlag = {
   id: number;
-  userId: number;
+  onUser: number;
+  fromUser: number;
   type: RedFlagType;
   desc: string;
 };
 
 export type RedFlagData = {
-  userId: number;
+  onUser: number;
+  fromUser: number;
   type: RedFlagType;
   desc: string;
 };
@@ -16,3 +18,9 @@ export enum RedFlagType {
   Idiot = "Unsolicited Idiocy",
   VK = "Vibe Killer",
 }
+
+export const AllFlagTypes = [
+  RedFlagType.Creep,
+  RedFlagType.Idiot,
+  RedFlagType.VK,
+];

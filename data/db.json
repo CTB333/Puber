@@ -72,7 +72,7 @@
       "firstName": "Tech",
       "lastName": "Geek",
       "password": "TechPass",
-      "rsvpStatus": false,
+      "rsvpStatus": true,
       "notiStatus": true,
       "rating": 4,
       "id": 7
@@ -182,7 +182,8 @@
         8,
         5,
         3,
-        1
+        1,
+        7
       ],
       "hideAddress": false,
       "id": 2
@@ -304,5 +305,27 @@
       "id": 5
     }
   ],
-  "flags": []
+  "flags": [
+    {
+      "onUser": 7,
+      "fromUser": 1,
+      "type": "Creeper",
+      "desc": "Super Creepy Geek",
+      "id": 1
+    },
+    {
+      "onUser": 7,
+      "fromUser": 1,
+      "type": "Vibe Killer",
+      "desc": "Killed my vibe",
+      "id": 2
+    },
+    {
+      "onUser": 5,
+      "fromUser": 7,
+      "type": "Creeper",
+      "desc": "Stupid guy flasher",
+      "id": 3
+    }
+  ]
 }

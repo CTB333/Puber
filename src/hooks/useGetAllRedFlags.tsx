@@ -22,6 +22,10 @@ const useGetAllRedFlags = () => {
     recieveFlags();
   }, [stringify(data)]);
 
+  useEffect(() => {
+    getFlags();
+  }, []);
+
   const getFlags = () => {
     get("flags");
   };

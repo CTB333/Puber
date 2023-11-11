@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet } from "react-native";
 import STYLES from "../styles";
 import { UserScreenProps } from "../navigation";
-import { useGoBackHeader } from "../hooks";
+import { useAddFlagHeader, useGoBackHeader } from "../hooks";
 
-const UserScreen = ({ navigation }: UserScreenProps) => {
-  useGoBackHeader();
+const UserScreen = ({ navigation, route }: UserScreenProps) => {
+  useAddFlagHeader(route.params.user);
   return (
     <View style={[STYLES.page, STYLES.center]}>
       <Text>UserScreen</Text>

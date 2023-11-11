@@ -30,6 +30,8 @@ import useSaveHeader from "./useSaveHeader";
 import usePartyNav from "./usePartyNav";
 import useGetUser from "./useGetUser";
 import useParyDetail from "./usePartyDetail";
+import useAddFlagHeader from "./useAddFlagHeader";
+import useAddRedFlag from "./useAddRedFlag";
 
 export {
   useEnableDrawerSwipe,
@@ -64,4 +66,6 @@ export {
   usePartyNav,
   useGetUser,
   useParyDetail,
+  useAddFlagHeader,
+  useAddRedFlag,
 };

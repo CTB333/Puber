@@ -7,9 +7,10 @@ import COLORS from "../colors";
 
 type UserHeaderProps = {
   user?: User | null;
+  hideStars?: boolean;
 };
 
-const UserHeader = ({ user }: UserHeaderProps) => {
+const UserHeader = ({ user, hideStars }: UserHeaderProps) => {
   return (
     <View style={[STYLES.center]}>
       <Icon name="user" size={110} />
@@ -18,7 +19,9 @@ const UserHeader = ({ user }: UserHeaderProps) => {
         {user?.firstName ?? ""} {user?.lastName ?? ""}
       </Text>
       <View style={[{ marginBottom: 15 }]} />
-      <StarRow color={COLORS.accent} filled={user?.rating} />
+      {!hideStars ? (
+        <StarRow color={COLORS.accent} filled={user?.rating} />
+      ) : null}
     </View>
   );
 };

@@ -30,11 +30,7 @@ const useAccountInfo = () => {
 
   useFocusEffect(
     useCallback(() => {
-      console.log(`Focus Effect`);
-
       if (!user) return;
-
-      console.log(stringify(user));
 
       setUserName(user.userName);
       setEmail(user.email);

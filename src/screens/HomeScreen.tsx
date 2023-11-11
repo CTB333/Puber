@@ -9,6 +9,7 @@ import {
   useEnableDrawerSwipe,
   useFilterParties,
   useHomeSnippetAnimation,
+  usePartyNav,
 } from "../hooks";
 import CONSTANTS from "../Constants";
 import MarkerMed from "../assets/MarkerMed.png";
@@ -24,6 +25,8 @@ const HomeScreen = ({ navigation }: HomeScreenProps) => {
 
   const { selected, animationStyle, onSelect } =
     useHomeSnippetAnimation(parties);
+
+  const toParty = usePartyNav();
 
   return (
     <View style={[STYLES.page, STYLES.center, STYLES.p30]}>
@@ -78,6 +81,7 @@ const HomeScreen = ({ navigation }: HomeScreenProps) => {
                 <PartySnippet
                   lessOpaque
                   party={selected}
+                  onPress={() => toParty(selected)}
                   distance={distances.find(
                     (distance) => selected.id === distance.partyId
                   )}

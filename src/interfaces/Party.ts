@@ -5,6 +5,9 @@ export type Party = {
   location: PartyLocation;
   date: PartyDate; // Should we allow multiple day parties?
   tags: PartyTag[];
+  drivers: number[];
+  guests: number[];
+  hideAddress: boolean;
   userId: number;
 };
 
@@ -15,6 +18,9 @@ export type PartyData = {
   location: PartyLocation;
   date: PartyDate;
   tags: PartyTag[];
+  drivers: number[];
+  guests: number[];
+  hideAddress: boolean;
 };
 
 export type PartyDate = {
@@ -31,6 +37,11 @@ export enum PartyTag {
   Rager = "Rager",
   Calm = "Calm",
   X = "X-Rated",
+  Drivers = "Drivers",
+  Uberable = "Uberable",
+  Tech = "Tech",
+  Art = "Art",
+  Food = "Food",
 }
 
 export const AllPartyTags = [
@@ -40,6 +51,11 @@ export const AllPartyTags = [
   PartyTag.Rager,
   PartyTag.Calm,
   PartyTag.X,
+  PartyTag.Drivers,
+  PartyTag.Uberable,
+  PartyTag.Tech,
+  PartyTag.Art,
+  PartyTag.Food,
 ];
 
 export type Address = {

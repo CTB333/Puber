@@ -13,6 +13,7 @@ type PartySnippetProps = {
   lessOpaque?: boolean;
   party: Party;
   distance?: PartyDistance;
+  onPress?: () => void;
 };
 
 const PartySnippet = ({
@@ -20,9 +21,11 @@ const PartySnippet = ({
   distance,
   primaryColor,
   lessOpaque,
+  onPress,
 }: PartySnippetProps) => {
   return (
     <PressOpaque
+      onPress={onPress}
       style={(pressed) => [
         STYLES.row,
         STYLES.width,

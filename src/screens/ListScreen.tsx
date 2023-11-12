@@ -10,7 +10,7 @@ import { useSetHeader } from "../hooks";
 import { UserSnippet } from "../components";
 import { useUser } from "../providers";
 import { ListScreenProps } from "../navigation";
-import { User } from "../interfaces";
+import { Party, User } from "../interfaces";
 import { ScrollView } from "react-native-gesture-handler";
 
 const ListScreen = ({ navigation }: ListScreenProps) => {
@@ -25,6 +25,10 @@ const ListScreen = ({ navigation }: ListScreenProps) => {
     navigation.navigate("User", { user });
   };
 
+  const toParty = (party: Party) => {
+    navigation.navigate("Party", {party});
+  }
+
   return (
     <View style={[STYLES.page, STYLES.center]}>
       <ScrollView style={[STYLES.width]}>
@@ -36,6 +40,11 @@ const ListScreen = ({ navigation }: ListScreenProps) => {
             );
           })}
         </ScrollView>
+        {parties.map((party) => {
+            return (
+              <UserSnippet onPress={() => toParty(party)} key={party.id} user={party} />
+            );
+          })}
       </ScrollView>
       
     </View>

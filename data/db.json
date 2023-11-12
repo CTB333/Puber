@@ -132,22 +132,9 @@
         "end": "12:00 PM",
         "dateTime": 1700100000000
       },
-      "tags": [
-        "21 +",
-        "Rager",
-        "Byob"
-      ],
+      "tags": ["21 +", "Rager", "Byob"],
       "drivers": [],
-      "guests": [
-        9,
-        7,
-        2,
-        5,
-        3,
-        6,
-        10,
-        4
-      ],
+      "guests": [9, 7, 2, 5, 3, 6, 10, 4],
       "hideAddress": false,
       "id": 1
     },
@@ -171,20 +158,9 @@
         "end": "8:30 PM",
         "dateTime": 1700500000000
       },
-      "tags": [
-        "Tech",
-        "Calm",
-        "Uberable",
-        "Drivers"
-      ],
+      "tags": ["Tech", "Calm", "Uberable", "Drivers"],
       "drivers": [],
-      "guests": [
-        8,
-        5,
-        3,
-        1,
-        7
-      ],
+      "guests": [8, 5, 3, 1, 7],
       "hideAddress": false,
       "id": 2
     },
@@ -208,22 +184,9 @@
         "end": "9:00 PM",
         "dateTime": 1700900000000
       },
-      "tags": [
-        "Art",
-        "Rager",
-        "Byow",
-        "Drivers"
-      ],
+      "tags": ["Art", "Rager", "Byow", "Drivers"],
       "drivers": [],
-      "guests": [
-        10,
-        8,
-        6,
-        7,
-        2,
-        4,
-        9
-      ],
+      "guests": [10, 8, 6, 7, 2, 4, 9],
       "hideAddress": false,
       "id": 3
     },
@@ -247,23 +210,9 @@
         "end": "4:00 PM",
         "dateTime": 1701500000000
       },
-      "tags": [
-        "Food",
-        "Calm",
-        "21 +"
-      ],
+      "tags": ["Food", "Calm", "21 +"],
       "drivers": [],
-      "guests": [
-        5,
-        9,
-        1,
-        8,
-        3,
-        7,
-        2,
-        10,
-        6
-      ],
+      "guests": [5, 9, 1, 8, 3, 7, 2, 10, 6],
       "hideAddress": false,
       "id": 4
     },
@@ -287,20 +236,9 @@
         "end": "10:00 PM",
         "dateTime": 1702300000000
       },
-      "tags": [
-        "Music",
-        "Byob",
-        "X-Rated",
-        "Drivers"
-      ],
+      "tags": ["Music", "Byob", "X-Rated", "Drivers"],
       "drivers": [],
-      "guests": [
-        3,
-        7,
-        9,
-        10,
-        1
-      ],
+      "guests": [3, 7, 9, 10, 1],
       "hideAddress": false,
       "id": 5
     }
@@ -311,6 +249,7 @@
       "fromUser": 1,
       "type": "Creeper",
       "desc": "Super Creepy Geek",
+      "date": 1699789355445,
       "id": 1
     },
     {
@@ -318,6 +257,7 @@
       "fromUser": 1,
       "type": "Vibe Killer",
       "desc": "Killed my vibe",
+      "date": 1699789355445,
       "id": 2
     },
     {
@@ -325,6 +265,7 @@
       "fromUser": 7,
       "type": "Creeper",
       "desc": "Stupid guy flasher",
+      "date": 1699789355445,
       "id": 3
     }
   ]

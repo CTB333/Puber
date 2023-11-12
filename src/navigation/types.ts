@@ -21,7 +21,7 @@ export type RootStackParamBase = {
   User: {
     user: User;
   };
-  RedFlagDetail: RedFlag;
+  RedFlagDetail: { flag: RedFlag };
   RedFlagAdd: { user: User };
   PartyDetail: {
     party: Party;

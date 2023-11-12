@@ -4,6 +4,7 @@ export type RedFlag = {
   fromUser: number;
   type: RedFlagType;
   desc: string;
+  date: number;
 };
 
 export type RedFlagData = {
@@ -11,6 +12,7 @@ export type RedFlagData = {
   fromUser: number;
   type: RedFlagType;
   desc: string;
+  date: number;
 };
 
 export enum RedFlagType {

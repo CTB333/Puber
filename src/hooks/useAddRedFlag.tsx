@@ -63,6 +63,7 @@ const useAddRedFlag = (flagUser: User) => {
       fromUser: user.id,
       type: flagType,
       desc,
+      date: new Date().getTime(),
     };
 
     post("flags", data);

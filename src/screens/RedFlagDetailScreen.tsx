@@ -6,51 +6,77 @@ import redFlagImage from "../assets/redflag.png";
 import useGetRedFlag from "../hooks/useGetRedFlag";
 import { FormHeader } from "../components";
 import { ActionButton } from "../components/buttons";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { dateToString } from "../utils";
 
-const RedFlagDetailScreen = ({ navigation, route }: RedFlagDetailScreenProps) => {
-  useGoBackHeader();;
+const RedFlagDetailScreen = ({
+  navigation,
+  route,
+}: RedFlagDetailScreenProps) => {
+  useGoBackHeader();
 
-  const redFlag = useGetRedFlag(route.params.id)
+  const redFlag = route.params.flag;
   const successMsg = useSuccessMessage();
+  const { bottom } = useSafeAreaInsets();
 
   const contest = () => {
-    successMsg("Contest Submitted")
-  }
+    successMsg("Contest Submitted");
+  };
 
-  if(redFlag != undefined){
-    return (
-      <SafeAreaView style={[STYLES.flex, STYLES.page]}>
-        <View style={[STYLES.height]}>
-          <View style={[
+  return (
+    <View
+      style={[
+        STYLES.flex,
+        STYLES.column,
+        STYLES.space,
+        STYLES.page,
+        { paddingBottom: bottom },
+      ]}
+    >
+      <View>
+        <View
+          style={[
             STYLES.row,
             STYLES.width,
             STYLES.center,
             { justifyContent: "space-around" },
-          ]}>
-            <Image style={{ width: 150, height: 150 }} source={redFlagImage} />
-            <Text style={[STYLES.center, STYLES.fs4, STYLES.bold]}>{redFlag.type}</Text>
-            </View>
-              <FormHeader title="Description" />
-            <Text style={[
+          ]}
+        >
+          <Image style={{ width: 150, height: 150 }} source={redFlagImage} />
+          <View style={[STYLES.center]}>
+            <Text
+              style={[
+                STYLES.textCenter,
                 STYLES.colorPrimary,
-                STYLES.fs1,
+                STYLES.fs4,
                 STYLES.bold,
-                STYLES.textCenter
-            ]}>
-              {redFlag.desc}
+              ]}
+            >
+              {redFlag.type}
             </Text>
-            <View style={[
-              STYLES.row,
-              STYLES.width,
-              STYLES.center,
-              STYLES.mv15
-            ]}>
-              <ActionButton onPress={contest} text="Contest Red Flag" />
-            </View>
+            <Text style={[STYLES.textCenter, STYLES.colorPrimary, STYLES.fs2]}>
+              {dateToString(new Date(redFlag.date))}
+            </Text>
           </View>
-      </SafeAreaView>
-    )
-  };
+        </View>
+        <FormHeader title="Description" />
+        <Text
+          style={[
+            STYLES.colorPrimary,
+            STYLES.fs1,
+            STYLES.bold,
+            STYLES.textCenter,
+          ]}
+        >
+          {redFlag.desc}
+        </Text>
+      </View>
+
+      <View style={[STYLES.row, STYLES.width, STYLES.center, STYLES.mv15]}>
+        <ActionButton onPress={contest} text="Contest Red Flag" />
+      </View>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({});

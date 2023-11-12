@@ -55,6 +55,8 @@ const AddPartyScreen = ({ navigation }: AddPartyScreenProps) => {
     setState,
     country,
     setCountry,
+    hideAddress,
+    setHideAddress,
     tags,
     setTags,
   } = useAddParty();
@@ -88,6 +90,12 @@ const AddPartyScreen = ({ navigation }: AddPartyScreenProps) => {
           state={country}
           setState={setCountry}
         />
+        <View style={{ marginBottom: 15 }} />
+        <RadioButton
+          enabled={hideAddress}
+          text={"Hide Address"}
+          onPress={() => setHideAddress((prev) => !prev)}
+        />
 
         <FormHeader title="Date Info" />
         <Input placeholder="Party Date" state={date} setState={setDate} />
@@ -111,7 +119,7 @@ const AddPartyScreen = ({ navigation }: AddPartyScreenProps) => {
           );
         })}
 
-        <ScrollFooterSpace divideBy={4} />
+        <ScrollFooterSpace divideBy={6} />
       </ScrollView>
       <View style={[STYLES.center]}>
         <ActionButton disabled={loading} text="Submit" onPress={submit} />

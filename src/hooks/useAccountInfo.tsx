@@ -1,45 +1,60 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import useFetch from "./useFetch";
 import { stringify } from "../utils";
 import { useUser } from "../providers";
 import useOnChange from "./useOnChange";
-import useRememberUser from "./useRememberUser";
+import { useFocusEffect } from "@react-navigation/native";
 
 const initialError = {
+  userName: "",
+  email: "",
   firstName: "",
   lastName: "",
-  email: "",
-  userName: "",
   password: "",
-  rePassword: "",
   server: "",
 };
 
-const useSignUp = () => {
-  const { data, isPending, success, error: fetchError, post } = useFetch();
-  const { setUser } = useUser();
-  const { store } = useRememberUser();
+const useAccountInfo = () => {
+  const { data, success, isPending, put, error: fetchError } = useFetch();
+  const { user, setUser } = useUser();
 
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [rePassword, setRePassword] = useState("");
+  const [rsvpStatus, setRsvpStatus] = useState(true);
+  const [notiStatus, setNotiStatus] = useState(true);
 
   const [error, setError, errorChange] = useOnChange(initialError);
 
+  useFocusEffect(
+    useCallback(() => {
+      if (!user) return;
+
+      setUserName(user.userName);
+      setEmail(user.email);
+      setFirstName(user.firstName);
+      setLastName(user.lastName);
+      setPassword(user.password);
+      setRsvpStatus(user.rsvpStatus);
+      setNotiStatus(user.notiStatus);
+    }, [stringify(user)])
+  );
+
   useEffect(() => {
-    if (fetchError) setError((prev) => ({ ...prev, server: fetchError }));
-    else clearError();
-  }, [fetchError]);
+    if (!fetchError) return;
+    setError((prev) => ({ ...prev, server: fetchError }));
+  }, [stringify(fetchError)]);
 
   useEffect(() => {
     if (!data) return;
-
     setUser(data);
-    store(data.id);
   }, [stringify(data)]);
+
+  const clearError = () => {
+    setError(initialError);
+  };
 
   const validate = () => {
     clearError();
@@ -63,57 +78,48 @@ const useSignUp = () => {
       setError((prev) => ({ ...prev, password: "Missing password" }));
       return false;
     }
-    if (rePassword.length == 0) {
-      setError((prev) => ({ ...prev, rePassword: "Missing repeat password" }));
-      return false;
-    }
-    if (password !== rePassword) {
-      setError((prev) => ({ ...prev, rePassword: "Passwords do not match" }));
-      return false;
-    }
-    return true;
-  };
 
-  const clearError = () => {
-    setError(initialError);
+    return true;
   };
 
   const submit = () => {
     if (!validate()) return;
+    if (!user) return;
 
-    let userData = {
+    put(`users/${user.id}`, {
+      userName,
+      email,
       firstName,
       lastName,
-      email,
-      userName,
       password,
-      rsvpStatus: true,
-      notiStatus: true,
-      rating: 5,
-    };
-
-    post(`users`, userData);
+      rsvpStatus,
+      notiStatus,
+      rating: user.rating,
+    });
   };
 
   return {
     submit,
     error,
     errorChange,
-    isPending,
+    loading: isPending,
     success,
+
+    userName,
+    setUserName,
+    email,
+    setEmail,
     firstName,
     setFirstName,
     lastName,
     setLastName,
-    email,
-    setEmail,
-    userName,
-    setUserName,
     password,
     setPassword,
-    rePassword,
-    setRePassword,
+    rsvpStatus,
+    setRsvpStatus,
+    notiStatus,
+    setNotiStatus,
   };
 };
 
-export default useSignUp;
+export default useAccountInfo;

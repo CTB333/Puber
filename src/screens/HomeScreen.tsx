@@ -2,15 +2,14 @@ import { View } from "react-native";
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 import Animated from "react-native-reanimated";
 import STYLES from "../styles";
-import { Loading, PartySnippet } from "../components";
+import { GMap, Loading, PartySnippet } from "../components";
 import { HomeScreenProps } from "../navigation";
 import {
   useDrawerHeader,
   useEnableDrawerSwipe,
-  useErrorMsg,
   useFilterParties,
-  useGetUserLocation,
   useHomeSnippetAnimation,
+  usePartyNav,
 } from "../hooks";
 import CONSTANTS from "../Constants";
 import MarkerMed from "../assets/MarkerMed.png";
@@ -26,6 +25,8 @@ const HomeScreen = ({ navigation }: HomeScreenProps) => {
 
   const { selected, animationStyle, onSelect } =
     useHomeSnippetAnimation(parties);
+
+  const toParty = usePartyNav();
 
   return (
     <View style={[STYLES.page, STYLES.center, STYLES.p30]}>
@@ -46,18 +47,7 @@ const HomeScreen = ({ navigation }: HomeScreenProps) => {
           </View>
         ) : (
           <View style={[STYLES.relative, STYLES.width, STYLES.height]}>
-            <MapView
-              provider={PROVIDER_GOOGLE}
-              showsUserLocation={true}
-              style={[STYLES.width, STYLES.height]}
-              customMapStyle={CONSTANTS.MapStyle}
-              initialRegion={{
-                latitude: userLocation.lat,
-                longitude: userLocation.lng,
-                longitudeDelta: 0.25,
-                latitudeDelta: 0.25,
-              }}
-            >
+            <GMap initial={userLocation}>
               {parties.map((party, index) => {
                 const coordinate = {
                   latitude: party.location.lat,
@@ -73,7 +63,7 @@ const HomeScreen = ({ navigation }: HomeScreenProps) => {
                   />
                 );
               })}
-            </MapView>
+            </GMap>
             <Animated.View
               style={[
                 STYLES.absolute,
@@ -89,7 +79,9 @@ const HomeScreen = ({ navigation }: HomeScreenProps) => {
             >
               {selected ? (
                 <PartySnippet
+                  lessOpaque
                   party={selected}
+                  onPress={() => toParty(selected)}
                   distance={distances.find(
                     (distance) => selected.id === distance.partyId
                   )}

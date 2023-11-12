@@ -9,6 +9,7 @@ interface UseFetchResult {
   isPending: boolean;
   success: boolean;
   error: any | null;
+  errorChange: number;
   get: (url: string, baseURL?: string) => void;
   post: (url: string, data: any, baseURL?: string) => void;
   put: (url: string, data: any, baseURL?: string) => void;
@@ -19,7 +20,7 @@ const useFetch = (): UseFetchResult => {
   const [data, setData, dataChange] = useOnChange<any | null>(null);
   const [isPending, setIsPending] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError, errorChange] = useOnChange<string | null>(null);
   const [abort, setAbort] = useState<AbortController | null>(null);
   const [tOut, setTOut] = useState<NodeJS.Timeout | null>(null);
 
@@ -123,6 +124,7 @@ const useFetch = (): UseFetchResult => {
     setTOut(timeout);
 
     setIsPending(true);
+    setSuccess(false);
 
     return controller;
   };
@@ -148,7 +150,18 @@ const useFetch = (): UseFetchResult => {
     setAbort(null);
   };
 
-  return { data, dataChange, isPending, success, error, get, post, put, del };
+  return {
+    data,
+    dataChange,
+    errorChange,
+    isPending,
+    success,
+    error,
+    get,
+    post,
+    put,
+    del,
+  };
 };
 
 export default useFetch;

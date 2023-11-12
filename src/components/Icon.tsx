@@ -6,6 +6,7 @@ import {
   Ionicons,
   AntDesign,
   Feather,
+  MaterialCommunityIcons,
 } from "@expo/vector-icons";
 import COLORS from "../colors";
 
@@ -42,6 +43,13 @@ const IconList = {
   starFill: (props: BaseIconProps) => <AntDesign {...props} name="star" />,
   upload: (props: BaseIconProps) => <Feather {...props} name="upload" />,
   flag: (props: BaseIconProps) => <Ionicons {...props} name="flag" />,
+  addFlag: (props: BaseIconProps) => (
+    <MaterialCommunityIcons {...props} name="flag-plus" />
+  ),
+  save: (props: BaseIconProps) => <MaterialIcons {...props} name="save" />,
+  userLocation: (props: BaseIconProps) => (
+    <MaterialIcons {...props} name="my-location" />
+  ),
 };
 
 type IconName =
@@ -59,7 +67,10 @@ type IconName =
   | "star"
   | "starFill"
   | "upload"
-  | "flag";
+  | "flag"
+  | "addFlag"
+  | "save"
+  | "userLocation";
 
 export type IconProps = {
   name: IconName;

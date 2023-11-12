@@ -9,7 +9,7 @@ import {
 import { StackScreenProps } from "@react-navigation/stack";
 import { DrawerScreenProps } from "@react-navigation/drawer";
 import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
-import { User } from "../interfaces";
+import { Party, User } from "../interfaces";
 
 export type RootStackParamBase = {
   Drawer: NavigatorScreenParams<DrawerNavParamBase>;
@@ -22,8 +22,10 @@ export type RootStackParamBase = {
     user: User;
   };
   RedFlagDetail: undefined;
-  RedFlagAdd: undefined;
-  PartyDetail: undefined;
+  RedFlagAdd: { user: User };
+  PartyDetail: {
+    party: Party;
+  };
 };
 
 export type DrawerNavParamBase = {

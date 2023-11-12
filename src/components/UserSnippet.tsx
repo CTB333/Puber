@@ -6,7 +6,7 @@ import COLORS from "../colors";
 import PressOpaque from "./PressOpaque";
 
 type UserSnippetProps = {
-  user: User;
+  user?: User;
   onPress?: () => void;
 };
 
@@ -26,7 +26,7 @@ const UserSnippet = ({ user, onPress }: UserSnippetProps) => {
     >
       <Icon name="user" color={COLORS.primary} size={50} />
       <Text style={[STYLES.fs1, STYLES.bold, STYLES.colorPrimary]}>
-        {user.userName}
+        {user?.userName ?? "No User Yet"}
       </Text>
     </PressOpaque>
   );

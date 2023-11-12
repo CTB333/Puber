@@ -1,19 +1,121 @@
 {
   "users": [
     {
-      "firstName": "CTB",
-      "lastName": "CTB",
-      "email": "CTB",
       "userName": "CTB",
+      "email": "CTB@example.com",
+      "firstName": "Colin",
+      "lastName": "Tondreau",
       "password": "CTB",
+      "rsvpStatus": true,
+      "notiStatus": false,
+      "rating": 5,
       "id": 1
+    },
+    {
+      "userName": "Alice123",
+      "email": "alice@example.com",
+      "firstName": "Alice",
+      "lastName": "Smith",
+      "password": "AlicePass",
+      "rsvpStatus": false,
+      "notiStatus": true,
+      "rating": 4,
+      "id": 2
+    },
+    {
+      "userName": "JohnDoe",
+      "email": "john.doe@example.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "password": "JohnPass",
+      "rsvpStatus": true,
+      "notiStatus": true,
+      "rating": 3,
+      "id": 3
+    },
+    {
+      "userName": "EllaGrace",
+      "email": "ella@example.com",
+      "firstName": "Ella",
+      "lastName": "Grace",
+      "password": "EllaPass",
+      "rsvpStatus": false,
+      "notiStatus": false,
+      "rating": 5,
+      "id": 4
+    },
+    {
+      "userName": "Samwise",
+      "email": "sam@example.com",
+      "firstName": "Sam",
+      "lastName": "Wise",
+      "password": "SamPass",
+      "rsvpStatus": true,
+      "notiStatus": true,
+      "rating": 4,
+      "id": 5
+    },
+    {
+      "userName": "LilyPond",
+      "email": "lily@example.com",
+      "firstName": "Lily",
+      "lastName": "Pond",
+      "password": "LilyPass",
+      "rsvpStatus": true,
+      "notiStatus": false,
+      "rating": 5,
+      "id": 6
+    },
+    {
+      "userName": "TechGeek",
+      "email": "tech@example.com",
+      "firstName": "Tech",
+      "lastName": "Geek",
+      "password": "TechPass",
+      "rsvpStatus": true,
+      "notiStatus": true,
+      "rating": 4,
+      "id": 7
+    },
+    {
+      "userName": "GracefulCoder",
+      "email": "grace@example.com",
+      "firstName": "Grace",
+      "lastName": "Coder",
+      "password": "GracePass",
+      "rsvpStatus": true,
+      "notiStatus": true,
+      "rating": 5,
+      "id": 8
+    },
+    {
+      "userName": "Maximus",
+      "email": "max@example.com",
+      "firstName": "Max",
+      "lastName": "imus",
+      "password": "MaxPass",
+      "rsvpStatus": false,
+      "notiStatus": false,
+      "rating": 3,
+      "id": 9
+    },
+    {
+      "userName": "Phoenix",
+      "email": "phoenix@example.com",
+      "firstName": "Phoenix",
+      "lastName": "Fire",
+      "password": "PhoenixPass",
+      "rsvpStatus": true,
+      "notiStatus": true,
+      "rating": 5,
+      "id": 10
     }
   ],
   "parties": [
     {
       "userId": 1,
       "title": "CTB KickOff",
-      "desc": "Kick the baby… then hang him up and us as  piniata!",
+      "desc": "Turn off the internet",
       "location": {
         "street": "65 Marine Dr",
         "city": "Buffalo",
@@ -31,39 +133,199 @@
         "dateTime": 1700100000000
       },
       "tags": [
-        "X-Rated",
+        "21 +",
         "Rager",
         "Byob"
       ],
+      "drivers": [],
+      "guests": [
+        9,
+        7,
+        2,
+        5,
+        3,
+        6,
+        10,
+        4
+      ],
+      "hideAddress": false,
       "id": 1
     },
     {
-      "userId": 1,
-      "title": "Roch Crotch",
-      "desc": "Crotch kicks",
+      "userId": 2,
+      "title": "Rochester Tech Meetup",
+      "desc": "Discuss the latest in technology",
       "location": {
-        "street": "330 Rock Beach Rd",
+        "street": "123 Main St",
         "city": "Rochester",
         "state": "NY",
-        "zip": "14617",
+        "zip": "14623",
         "country": "US",
-        "fullAddress": "330 Rock Beach Rd Rochester NY 14617 US",
-        "lat": 43.2485363,
-        "lng": -77.58818049999999
+        "fullAddress": "123 Main St Rochester NY 14623 US",
+        "lat": 43.090182,
+        "lng": -77.678488
       },
       "date": {
-        "date": "11/9/23",
-        "start": "9:00 PM",
-        "end": "12:00 PM",
-        "dateTime": 1699581600000
+        "date": "11/20/23",
+        "start": "6:30 PM",
+        "end": "8:30 PM",
+        "dateTime": 1700500000000
       },
       "tags": [
-        "21 +",
-        "Byob",
-        "Byow"
+        "Tech",
+        "Calm",
+        "Uberable",
+        "Drivers"
       ],
+      "drivers": [],
+      "guests": [
+        8,
+        5,
+        3,
+        1,
+        7
+      ],
+      "hideAddress": false,
       "id": 2
+    },
+    {
+      "userId": 3,
+      "title": "Rochester Art Exhibition",
+      "desc": "Explore local art creations",
+      "location": {
+        "street": "456 Art Ave",
+        "city": "Rochester",
+        "state": "NY",
+        "zip": "14612",
+        "country": "US",
+        "fullAddress": "456 Art Ave Rochester NY 14612 US",
+        "lat": 43.24205,
+        "lng": -77.635319
+      },
+      "date": {
+        "date": "11/25/23",
+        "start": "5:00 PM",
+        "end": "9:00 PM",
+        "dateTime": 1700900000000
+      },
+      "tags": [
+        "Art",
+        "Rager",
+        "Byow",
+        "Drivers"
+      ],
+      "drivers": [],
+      "guests": [
+        10,
+        8,
+        6,
+        7,
+        2,
+        4,
+        9
+      ],
+      "hideAddress": false,
+      "id": 3
+    },
+    {
+      "userId": 4,
+      "title": "Rochester Food Festival",
+      "desc": "Savor delicious local cuisines",
+      "location": {
+        "street": "789 Foodie Blvd",
+        "city": "Rochester",
+        "state": "NY",
+        "zip": "14616",
+        "country": "US",
+        "fullAddress": "789 Foodie Blvd Rochester NY 14616 US",
+        "lat": 43.20945,
+        "lng": -77.64212
+      },
+      "date": {
+        "date": "12/02/23",
+        "start": "12:00 PM",
+        "end": "4:00 PM",
+        "dateTime": 1701500000000
+      },
+      "tags": [
+        "Food",
+        "Calm",
+        "21 +"
+      ],
+      "drivers": [],
+      "guests": [
+        5,
+        9,
+        1,
+        8,
+        3,
+        7,
+        2,
+        10,
+        6
+      ],
+      "hideAddress": false,
+      "id": 4
+    },
+    {
+      "userId": 5,
+      "title": "Rochester Music Concert",
+      "desc": "Enjoy live music performances",
+      "location": {
+        "street": "567 Melody Lane",
+        "city": "Rochester",
+        "state": "NY",
+        "zip": "14620",
+        "country": "US",
+        "fullAddress": "567 Melody Lane Rochester NY 14620 US",
+        "lat": 43.115417,
+        "lng": -77.619606
+      },
+      "date": {
+        "date": "12/10/23",
+        "start": "7:00 PM",
+        "end": "10:00 PM",
+        "dateTime": 1702300000000
+      },
+      "tags": [
+        "Music",
+        "Byob",
+        "X-Rated",
+        "Drivers"
+      ],
+      "drivers": [],
+      "guests": [
+        3,
+        7,
+        9,
+        10,
+        1
+      ],
+      "hideAddress": false,
+      "id": 5
     }
   ],
-  "flags": []
+  "flags": [
+    {
+      "onUser": 7,
+      "fromUser": 1,
+      "type": "Creeper",
+      "desc": "Super Creepy Geek",
+      "id": 1
+    },
+    {
+      "onUser": 7,
+      "fromUser": 1,
+      "type": "Vibe Killer",
+      "desc": "Killed my vibe",
+      "id": 2
+    },
+    {
+      "onUser": 5,
+      "fromUser": 7,
+      "type": "Creeper",
+      "desc": "Stupid guy flasher",
+      "id": 3
+    }
+  ]
 }

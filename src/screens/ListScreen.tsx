@@ -3,11 +3,13 @@ import STYLES from "../styles";
 import {
   useDrawerHeader,
   useEnableDrawerSwipe,
+  useFilterParties,
   useGetAllParties,
   useGetAllUsers,
+  usePartyNav,
 } from "../hooks";
 import { useSetHeader } from "../hooks";
-import { UserSnippet } from "../components";
+import { FormHeader, PartySnippet, PartySnippetList, UserSnippet } from "../components";
 import { useUser } from "../providers";
 import { ListScreenProps } from "../navigation";
 import { Party, User } from "../interfaces";
@@ -19,30 +21,41 @@ const ListScreen = ({ navigation }: ListScreenProps) => {
 
   // const { user } = useUser();
   const { users } = useGetAllUsers();
-  const { parties } = useGetAllParties();
+  //const { parties } = useGetAllParties();
+  const { parties, distances } = useFilterParties([
+    navigation.isFocused(),
+  ]);
 
   const toUser = (user: User) => {
     navigation.navigate("User", { user });
   };
 
-  const toParty = (party: Party) => {
-    navigation.navigate("Party", {party});
-  }
+  const toParty = usePartyNav();
+
+  // const toParty = (party: Party) => {
+  //   navigation.navigate("Party", {party});
+  // }
 
   return (
     <View style={[STYLES.page, STYLES.center]}>
       <ScrollView style={[STYLES.width]}>
-        <Text>ListScreen</Text>
+        <FormHeader title="Friends" />
         <ScrollView horizontal style={[STYLES.width]}>
           {users.map((user) => {
             return (
-              <UserSnippet onPress={() => toUser(user)} key={user.id} user={user} />
+              <View style={[{marginRight: 15}]}>
+                <UserSnippet onPress={() => toUser(user)} key={user.id} user={user} />
+              </View>
             );
           })}
         </ScrollView>
+        <FormHeader title="Parties" />
+        {/* <PartySnippetList parties={parties}/> */}
         {parties.map((party) => {
             return (
-              <UserSnippet onPress={() => toParty(party)} key={party.id} user={party} />
+              <View style={[{ marginBottom: 15 }]} key={party.id}>
+                <PartySnippet primaryColor party={party} distance={distances.find((distance) => party.id === distance.partyId)} />
+              </View>
             );
           })}
       </ScrollView>

@@ -4,6 +4,7 @@ import Icon from "./Icon";
 import COLORS from "../colors";
 import { RedFlag } from "../interfaces";
 import PressOpaque from "./PressOpaque";
+import { dateToString } from "../utils";
 
 type RedFlagSnippetProps = {
   flag: RedFlag;
@@ -31,7 +32,9 @@ const RedFlagSnippet = ({ onPress, flag }: RedFlagSnippetProps) => {
             {flag.type}
           </Text>
           <Text style={[STYLES.fs1, STYLES.colorPrimary]}>{flag.desc}</Text>
-          <Text style={[STYLES.fs1, STYLES.colorPrimary]}>Filed On: Date</Text>
+          <Text style={[STYLES.fs1, STYLES.colorPrimary]}>
+            Filed On: {dateToString(new Date(flag.date))}
+          </Text>
         </View>
       </View>
       <View style={[STYLES.center]}>

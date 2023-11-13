@@ -26,7 +26,7 @@ const initialState: HeaderContextStateType = {
   left: {},
   right: {},
   title: "Puber",
-  visible: false,
+  visible: true,
 };
 
 const initialValue: HeaderContextType = {

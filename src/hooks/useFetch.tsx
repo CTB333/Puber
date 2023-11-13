@@ -61,8 +61,10 @@ const useFetch = (): UseFetchResult => {
         signal: controller.signal,
         body: stringify(data),
       });
-      if (!allowedStatusCodes.includes(res.status))
+      if (!allowedStatusCodes.includes(res.status)) {
+        console.log(`Error: ${stringify(await res.json())}`);
         throw new Error(`Internal Server Error: ${res.status}`);
+      }
       let json = await res.json();
       successCall(json);
     } catch (e: any) {
@@ -119,7 +121,7 @@ const useFetch = (): UseFetchResult => {
 
     let timeout = setTimeout(() => {
       controller.abort();
-    }, 5000);
+    }, 15000);
 
     setTOut(timeout);
 

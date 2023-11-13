@@ -341,6 +341,7 @@ const useAddPartyLocation = () => {
     reset,
     error,
     errorChange,
+    validate,
 
     street,
     setStreet,

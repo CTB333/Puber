@@ -2,7 +2,7 @@ import React from "react";
 import { Pressable, StyleProp, View, ViewStyle } from "react-native";
 
 type PressOpaqueProps = {
-  children: React.ReactNode | ((pressed: boolean) => React.ReactNode);
+  children?: React.ReactNode | ((pressed: boolean) => React.ReactNode);
   onPress?: () => void;
   style?: StyleProp<ViewStyle> | ((pressed: boolean) => StyleProp<ViewStyle>);
 };

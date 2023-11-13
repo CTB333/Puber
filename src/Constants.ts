@@ -192,12 +192,15 @@ const MAPSTYLE = [
 const CONSTANTS = {
   ScreenHieght: height,
   ScreenWidth: width,
+  PartyImageHeight: height / 3,
   URL: "https://48b1-2605-8300-ff01-154-f909-1df9-9193-f408.ngrok-free.app/", // Must include '/' at the end of url
   GeoCodeURL: "https://maps.googleapis.com/maps/api/geocode/json?address=",
   DistanceURL: (destinations: string, origin: string, key: string) =>
     `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&destinations=${destinations}&origins=${origin}&key=${key}`,
   GoogleAPIKey: "AIzaSyDZXuezXmHuoBbecqGqZz0IW0kv7S65Pes", // This will be deleted at the end of the semester https://console.cloud.google.com/google/maps-apis/home?project=swen-444
   MapStyle: MAPSTYLE,
+  ImageAPIKey: "21203d04a37a7fded2260347769a7123", // This will be deleted at the end of the semester https://api.imgbb.com/
+  ImageAPIUrl: "https://api.imgbb.com/1/upload",
 };
 
 export default CONSTANTS;

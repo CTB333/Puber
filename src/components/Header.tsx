@@ -23,7 +23,7 @@ const Header = ({
           paddingTop: top + 10,
           paddingBottom: 15,
           opacity: 1,
-          // height: visible ? undefined : 0,
+          maxHeight: visible ? undefined : 0,
         },
       ]}
     >

@@ -38,11 +38,25 @@ const useParyDetail = (routeParty: Party) => {
     ? true
     : false;
   const hasDrivers = party.tags.includes(PartyTag.Drivers);
+  const userIsDriver = party.drivers.includes(user!.id);
 
   useEffect(() => {
     if (!data) return;
     setParty(data);
   }, [stringify(data)]);
+
+  const removeDriver = () => {
+    if (!user) return;
+    if (!userIsDriver) return;
+
+    let newDrivers = party.drivers;
+    newDrivers = newDrivers.filter((driver) => driver !== user.id);
+
+    put(`parties/${party.id}`, {
+      ...party,
+      drivers: newDrivers,
+    });
+  };
 
   const rsvp = () => {
     if (!user) return;
@@ -71,6 +85,8 @@ const useParyDetail = (routeParty: Party) => {
     loading,
     success,
     userIsRsvpd,
+    userIsDriver,
+    removeDriver,
   };
 };
 

@@ -9,7 +9,8 @@
       "rsvpStatus": true,
       "notiStatus": false,
       "rating": 5,
-      "id": 1
+      "id": 1,
+      "liscence": "https://i.ibb.co/dpNFSHq/95d3b318164f.jpg"
     },
     {
       "userName": "Alice123",
@@ -115,6 +116,7 @@
     {
       "userId": 1,
       "title": "CTB KickOff",
+      "image": "https://i.ibb.co/dpNFSHq/95d3b318164f.jpg",
       "desc": "Turn off the internet",
       "location": {
         "street": "65 Marine Dr",
@@ -132,15 +134,29 @@
         "end": "12:00 PM",
         "dateTime": 1700100000000
       },
-      "tags": ["21 +", "Rager", "Byob"],
+      "tags": [
+        "21 +",
+        "Rager",
+        "Byob"
+      ],
       "drivers": [],
-      "guests": [9, 7, 2, 5, 3, 6, 10, 4],
+      "guests": [
+        9,
+        7,
+        2,
+        5,
+        3,
+        6,
+        10,
+        4
+      ],
       "hideAddress": false,
       "id": 1
     },
     {
       "userId": 2,
       "title": "Rochester Tech Meetup",
+      "image": "https://i.ibb.co/dpNFSHq/95d3b318164f.jpg",
       "desc": "Discuss the latest in technology",
       "location": {
         "street": "123 Main St",
@@ -158,15 +174,29 @@
         "end": "8:30 PM",
         "dateTime": 1700500000000
       },
-      "tags": ["Tech", "Calm", "Uberable", "Drivers"],
-      "drivers": [],
-      "guests": [8, 5, 3, 1, 7],
+      "tags": [
+        "Tech",
+        "Calm",
+        "Uberable",
+        "Drivers"
+      ],
+      "drivers": [
+        1
+      ],
+      "guests": [
+        8,
+        5,
+        3,
+        1,
+        7
+      ],
       "hideAddress": false,
       "id": 2
     },
     {
       "userId": 3,
       "title": "Rochester Art Exhibition",
+      "image": "https://i.ibb.co/dpNFSHq/95d3b318164f.jpg",
       "desc": "Explore local art creations",
       "location": {
         "street": "456 Art Ave",
@@ -184,15 +214,29 @@
         "end": "9:00 PM",
         "dateTime": 1700900000000
       },
-      "tags": ["Art", "Rager", "Byow", "Drivers"],
+      "tags": [
+        "Art",
+        "Rager",
+        "Byow",
+        "Drivers"
+      ],
       "drivers": [],
-      "guests": [10, 8, 6, 7, 2, 4, 9],
+      "guests": [
+        10,
+        8,
+        6,
+        7,
+        2,
+        4,
+        9
+      ],
       "hideAddress": false,
       "id": 3
     },
     {
       "userId": 4,
       "title": "Rochester Food Festival",
+      "image": "https://i.ibb.co/dpNFSHq/95d3b318164f.jpg",
       "desc": "Savor delicious local cuisines",
       "location": {
         "street": "789 Foodie Blvd",
@@ -210,15 +254,30 @@
         "end": "4:00 PM",
         "dateTime": 1701500000000
       },
-      "tags": ["Food", "Calm", "21 +"],
+      "tags": [
+        "Food",
+        "Calm",
+        "21 +"
+      ],
       "drivers": [],
-      "guests": [5, 9, 1, 8, 3, 7, 2, 10, 6],
+      "guests": [
+        5,
+        9,
+        1,
+        8,
+        3,
+        7,
+        2,
+        10,
+        6
+      ],
       "hideAddress": false,
       "id": 4
     },
     {
       "userId": 5,
       "title": "Rochester Music Concert",
+      "image": "https://i.ibb.co/dpNFSHq/95d3b318164f.jpg",
       "desc": "Enjoy live music performances",
       "location": {
         "street": "567 Melody Lane",
@@ -236,11 +295,56 @@
         "end": "10:00 PM",
         "dateTime": 1702300000000
       },
-      "tags": ["Music", "Byob", "X-Rated", "Drivers"],
-      "drivers": [],
-      "guests": [3, 7, 9, 10, 1],
+      "tags": [
+        "Music",
+        "Byob",
+        "X-Rated",
+        "Drivers"
+      ],
+      "drivers": [
+        1
+      ],
+      "guests": [
+        3,
+        7,
+        9,
+        10,
+        1
+      ],
       "hideAddress": false,
       "id": 5
+    },
+    {
+      "userId": 1,
+      "title": "Juice",
+      "desc": "Apple Juice to be specific",
+      "location": {
+        "street": "32 Lehigh Station Rd",
+        "city": "West Henrietta",
+        "state": "NY",
+        "zip": "14586",
+        "country": "US",
+        "fullAddress": "32 Lehigh Station Rd West Henrietta NY 14586 US",
+        "lat": 43.0585263,
+        "lng": -77.68831109999999
+      },
+      "date": {
+        "date": "11/13/23",
+        "start": "9:00 PM",
+        "end": "12:00 PM",
+        "dateTime": 1699927200000
+      },
+      "tags": [
+        "21 +",
+        "Byow",
+        "Drivers",
+        "Uberable"
+      ],
+      "drivers": [],
+      "guests": [],
+      "image": "https://i.ibb.co/YcSRF3Z/6e0650dc34ab.jpg",
+      "hideAddress": true,
+      "id": 6
     }
   ],
   "flags": [

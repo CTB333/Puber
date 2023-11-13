@@ -228,6 +228,7 @@ const STYLES = StyleSheet.create({
   bgSecondary: { backgroundColor: COLORS.secondary },
   bgWhite: { backgroundColor: COLORS.white },
   bgAccent: { backgroundColor: COLORS.accent },
+  bgTransparent: { backgroundColor: COLORS.transparent },
 
   colorPrimary: { color: COLORS.primary },
   colorSecondary: { color: COLORS.secondary },

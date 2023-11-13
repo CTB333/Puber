@@ -5,6 +5,7 @@ export type User = {
   email: string;
   userName: string;
   password: string;
+  liscence?: string;
   rsvpStatus: boolean;
   notiStatus: boolean;
   rating: number;
@@ -16,4 +17,5 @@ export type UserData = {
   email: string;
   userName: string;
   password: string;
+  liscence?: string;
 };

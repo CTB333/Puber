@@ -18,6 +18,12 @@
         {
           "locationAlwaysAndWhenInUsePermission": "Allow Puber to use your location."
         }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow Puber to access your camera."
+        }
       ]
     ],
     "ios": {

@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Image, StyleSheet } from "react-native";
 import STYLES from "../styles";
 import { AddPartyScreenProps } from "../navigation";
 import { useEffect } from "react";
@@ -13,13 +13,18 @@ import {
 } from "../hooks";
 import {
   FormHeader,
+  Icon,
   Input,
+  PressOpaque,
   RadioButton,
   ScrollFooterSpace,
 } from "../components";
 import { ScrollView } from "react-native-gesture-handler";
 import { ActionButton, Button } from "../components/buttons";
 import { AllPartyTags } from "../interfaces";
+import CONSTANTS from "../Constants";
+import COLORS from "../colors";
+import CameraScreen from "./CameraScreen";
 
 const AddPartyScreen = ({ navigation }: AddPartyScreenProps) => {
   useEnableDrawerSwipe();
@@ -59,6 +64,13 @@ const AddPartyScreen = ({ navigation }: AddPartyScreenProps) => {
     setHideAddress,
     tags,
     setTags,
+
+    image,
+    cameraRef,
+    openCamera,
+    closeCamera,
+    cameraOpen,
+    takePicture,
   } = useAddParty();
 
   const successMsg = useSuccessMessage();
@@ -72,9 +84,38 @@ const AddPartyScreen = ({ navigation }: AddPartyScreenProps) => {
   useErrorMsg(error, errorChange);
   useErrorMsg(addressError, addressErrorChange);
 
+  if (cameraOpen)
+    return (
+      <CameraScreen
+        takePicture={takePicture}
+        cameraRef={cameraRef}
+        closeCamera={closeCamera}
+        boxHeight={CONSTANTS.PartyImageHeight}
+      />
+    );
+
   return (
     <View style={[STYLES.page, STYLES.relative, STYLES.center]}>
       <ScrollView style={[STYLES.flex, STYLES.width]}>
+        <PressOpaque
+          onPress={openCamera}
+          style={[
+            STYLES.center,
+            STYLES.width,
+            STYLES.rad15,
+            STYLES.bgPrimary,
+            { height: CONSTANTS.PartyImageHeight, overflow: "hidden" },
+          ]}
+        >
+          {image ? (
+            <Image
+              style={[STYLES.flex, STYLES.width, STYLES.height]}
+              source={{ uri: image.uri }}
+            />
+          ) : (
+            <Icon name="upload" size={40} color={COLORS.white} />
+          )}
+        </PressOpaque>
         <FormHeader title="Basic Info" />
         <Input placeholder="Party Title" state={title} setState={setTitle} />
         <Input placeholder="Party Desc" state={desc} setState={setDesc} />

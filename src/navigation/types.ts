@@ -16,7 +16,9 @@ export type RootStackParamBase = {
   Splash: undefined;
   Login: undefined;
   SignUp: undefined;
-  DriverApplication: undefined;
+  DriverApplication: {
+    party: Party;
+  };
   Account: undefined;
   User: {
     user: User;

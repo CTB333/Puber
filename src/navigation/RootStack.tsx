@@ -18,10 +18,12 @@ import { RootStackParamBase } from "./types";
 import DrawerNav from "./DrawerNav";
 import COLORS from "../colors";
 import { Header } from "../components";
+import { useHeader } from "../providers";
 
 const Stack = createStackNavigator<RootStackParamBase>();
 
 const RootStack = () => {
+  const { visible } = useHeader();
   return (
     <Stack.Navigator
       id="RootStack"

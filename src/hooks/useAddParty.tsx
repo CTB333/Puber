@@ -9,9 +9,11 @@ import {
   stringify,
 } from "../utils";
 import useFetch from "./useFetch";
-import { Party, PartyData, PartyTag } from "../interfaces";
+import { Party, Image, PartyData, PartyTag } from "../interfaces";
 import useOnChange from "./useOnChange";
 import { useUser } from "../providers";
+import useCamera from "./useCamera";
+import useUploadImage from "./useUploadImage";
 
 const initialError = {
   title: "",
@@ -19,12 +21,29 @@ const initialError = {
   date: "",
   startTime: "",
   endTime: "",
+  camera: "",
+  image: "",
   server: "",
 };
 
 const useAddParty = () => {
   const { data, post, error: fetchError } = useFetch();
   const { user } = useUser();
+
+  const {
+    openCamera,
+    closeCamera,
+    cameraOpen,
+    cameraRef,
+    takePicture,
+    image: cameraImage,
+    imageChange: cameraImageChange,
+
+    error: cameraError,
+    errorChange: cameraErrorChange,
+  } = useCamera();
+  const { upload, url, error: uploadError } = useUploadImage();
+  const [image, setImage] = useState<Image | null>(null);
 
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -43,6 +62,7 @@ const useAddParty = () => {
     reset: resetAddress,
     error: addressError,
     errorChange: addressErrorChange,
+    validate: validateAddress,
 
     street,
     setStreet,
@@ -59,10 +79,26 @@ const useAddParty = () => {
   const [error, setError, errorChange] = useOnChange(initialError);
 
   useEffect(() => {
-    if (!fetchError) return;
+    if (fetchError) setError((prev) => ({ ...prev, server: fetchError }));
+    if (uploadError) setError((prev) => ({ ...prev, server: uploadError }));
 
-    setError((prev) => ({ ...prev, server: fetchError }));
-  }, [stringify(fetchError)]);
+    if (fetchError || uploadError) setLoading(false);
+  }, [stringify(fetchError), stringify(uploadError)]);
+
+  useEffect(() => {
+    setError((prev) => ({ ...prev, camera: cameraError.permission }));
+  }, [cameraErrorChange]);
+
+  useEffect(() => {
+    if (!cameraImage) return;
+    setImage(cameraImage);
+  }, [cameraImageChange]);
+
+  useEffect(() => {
+    if (!url) return;
+
+    submitAddress();
+  }, [url]);
 
   useEffect(() => {
     if (!partyLocation) return;
@@ -100,10 +136,10 @@ const useAddParty = () => {
     return false;
   };
 
-  const validate = () => {
+  const validate = (skipLocation?: boolean) => {
     clearError();
 
-    if (!partyLocation) {
+    if (!skipLocation && !partyLocation) {
       setError((prev) => ({
         ...prev,
         server: `Internal Front-End Error: Missing Party Location`,
@@ -188,6 +224,7 @@ const useAddParty = () => {
   const submit = () => {
     if (!validate()) return;
     if (!partyLocation) return;
+    if (!url) return;
 
     let dateTime = dateAndTimeStringToDate(date, startTime);
 
@@ -205,18 +242,28 @@ const useAddParty = () => {
       tags,
       drivers: [],
       guests: [],
+      image: url,
       hideAddress,
     };
 
     post(`parties`, party);
   };
 
+  const submitImage = () => {
+    if (!image?.base64)
+      return setError((prev) => ({ ...prev, image: "Missing image" }));
+
+    if (!validate(true)) return;
+    if (!validateAddress()) return;
+
+    setSuccess(false);
+    setLoading(true);
+
+    upload(image.base64);
+  };
+
   return {
-    submit: () => {
-      setSuccess(false);
-      setLoading(true);
-      submitAddress();
-    },
+    submit: submitImage,
     success,
     reset,
     loading,
@@ -249,6 +296,13 @@ const useAddParty = () => {
     setHideAddress,
     tags,
     setTags: selectTag,
+
+    image,
+    cameraRef,
+    openCamera,
+    closeCamera,
+    cameraOpen,
+    takePicture,
   };
 };
 

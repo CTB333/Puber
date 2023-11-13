@@ -8,6 +8,7 @@ export type Party = {
   drivers: number[];
   guests: number[];
   hideAddress: boolean;
+  image: string;
   userId: number;
 };
 
@@ -21,6 +22,7 @@ export type PartyData = {
   drivers: number[];
   guests: number[];
   hideAddress: boolean;
+  image: string;
 };
 
 export type PartyDate = {

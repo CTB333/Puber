@@ -1,20 +1,32 @@
 import { View, Text, StyleSheet, Image } from "react-native";
 import STYLES from "../styles";
 import { DriverApplicationScreenProps } from "../navigation";
-import { useDriverApplication, useErrorMsg, useGoBackHeader } from "../hooks";
+import {
+  useDriverApplication,
+  useErrorMsg,
+  useGoBackHeader,
+  useOnSuccess,
+  useSuccessMessage,
+} from "../hooks";
 import { FormHeader, Icon, PressOpaque } from "../components";
 import COLORS from "../colors";
 import { ActionButton } from "../components/buttons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import CameraScreen from "./CameraScreen";
+import { useUser } from "../providers";
 
 const DriverApplicationScreen = ({
   navigation,
+  route,
 }: DriverApplicationScreenProps) => {
   const { bottom } = useSafeAreaInsets();
+  const party = route.params.party;
+  const { user } = useUser();
 
   const {
     submit,
+    loading,
+    success,
     error,
     errorChange,
 
@@ -25,9 +37,14 @@ const DriverApplicationScreen = ({
     closeCamera,
     cameraOpen,
     takePicture,
-  } = useDriverApplication();
-
+  } = useDriverApplication(party);
   useGoBackHeader([cameraOpen]);
+
+  const successMsg = useSuccessMessage();
+  useOnSuccess(() => {
+    successMsg(`Application Accepted`);
+    navigation.goBack();
+  }, success);
 
   useErrorMsg(error, errorChange);
 
@@ -67,6 +84,11 @@ const DriverApplicationScreen = ({
               style={[STYLES.flex, STYLES.width, STYLES.height]}
               source={{ uri: image.uri }}
             />
+          ) : user && user.liscence && user.liscence.length > 0 ? (
+            <Image
+              style={[STYLES.flex, STYLES.width, STYLES.height]}
+              source={{ uri: user.liscence }}
+            />
           ) : (
             <Icon name="upload" size={40} color={COLORS.white} />
           )}
@@ -74,7 +96,7 @@ const DriverApplicationScreen = ({
       </View>
 
       <View style={[STYLES.center]}>
-        <ActionButton bold text="Apply" onPress={submit} />
+        <ActionButton disabled={loading} bold text="Apply" onPress={submit} />
       </View>
     </View>
   );

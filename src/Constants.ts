@@ -192,6 +192,7 @@ const MAPSTYLE = [
 const CONSTANTS = {
   ScreenHieght: height,
   ScreenWidth: width,
+  PartyImageHeight: height / 3,
   URL: "https://48b1-2605-8300-ff01-154-f909-1df9-9193-f408.ngrok-free.app/", // Must include '/' at the end of url
   GeoCodeURL: "https://maps.googleapis.com/maps/api/geocode/json?address=",
   DistanceURL: (destinations: string, origin: string, key: string) =>

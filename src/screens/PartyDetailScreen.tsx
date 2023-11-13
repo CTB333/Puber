@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, ScrollView } from "react-native";
+import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
 import STYLES from "../styles";
 import { PartyDetailScreenProps } from "../navigation";
 import {
@@ -37,6 +37,8 @@ const PartyDetailScreen = ({ navigation, route }: PartyDetailScreenProps) => {
     loading,
     success,
     userIsRsvpd,
+    userIsDriver,
+    removeDriver,
   } = usePartyDetail(route.params.party);
 
   const succesMsg = useSuccessMessage();
@@ -49,7 +51,7 @@ const PartyDetailScreen = ({ navigation, route }: PartyDetailScreenProps) => {
   };
 
   const toDriversApp = () => {
-    navigation.navigate("DriverApplication");
+    navigation.navigate("DriverApplication", { party });
   };
 
   return (
@@ -63,9 +65,12 @@ const PartyDetailScreen = ({ navigation, route }: PartyDetailScreenProps) => {
           style={[
             STYLES.bgPrimary,
             STYLES.width,
-            { height: CONSTANTS.ScreenHieght / 3 },
+            STYLES.relative,
+            { height: CONSTANTS.PartyImageHeight },
           ]}
-        ></View>
+        >
+          <Image source={{ uri: party.image }} style={[STYLES.absoluteFill]} />
+        </View>
         <View style={[STYLES.p15]}>
           {/* Tags And Title */}
           <FormHeader marginTop={0} title={party.title} />
@@ -164,7 +169,11 @@ const PartyDetailScreen = ({ navigation, route }: PartyDetailScreenProps) => {
                 ))}
               </View>
               <View style={[STYLES.center]}>
-                <Button onPress={toDriversApp} text="Apply" />
+                <Button
+                  disabled={loading}
+                  onPress={userIsDriver ? removeDriver : toDriversApp}
+                  text={userIsDriver ? "Quit Driving" : "Apply"}
+                />
               </View>
             </>
           ) : null}

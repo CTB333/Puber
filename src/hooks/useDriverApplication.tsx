@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import useCamera from "./useCamera";
 import useOnChange from "./useOnChange";
-import { Image } from "../interfaces";
+import { Image, Party } from "../interfaces";
 import useFetch from "./useFetch";
 import { stringify } from "../utils";
 import CONSTANTS from "../Constants";
+import useUploadImage from "./useUploadImage";
+import { useUser } from "../providers";
 
 const initialValue = {
   camera: "",
@@ -12,8 +14,9 @@ const initialValue = {
   server: "",
 };
 
-const useDriverApplication = () => {
-  const { data, post, error: fetchError, isPending, success } = useFetch();
+const useDriverApplication = (party: Party) => {
+  const { user } = useUser();
+  const { data, put, error: fetchError } = useFetch();
   const {
     openCamera,
     closeCamera,
@@ -27,16 +30,26 @@ const useDriverApplication = () => {
     errorChange: cameraErrorChange,
   } = useCamera();
 
+  const { upload, url, error: uploadError } = useUploadImage();
+
   const [image, setImage] = useState<Image | null>(null);
+
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [dataIsParty, setDataIsParty] = useState(false);
+
+  const [error, setError, errorChange] = useOnChange(initialValue);
 
   useEffect(() => {
     setError((prev) => ({ ...prev, camera: cameraError.permission }));
   }, [cameraErrorChange]);
 
   useEffect(() => {
-    if (!fetchError) return;
-    setError((prev) => ({ ...prev, server: fetchError }));
-  }, [stringify(fetchError)]);
+    if (fetchError) setError((prev) => ({ ...prev, server: fetchError }));
+    if (uploadError) setError((prev) => ({ ...prev, server: uploadError }));
+
+    if (fetchError || uploadError) setLoading(false);
+  }, [stringify(fetchError), stringify(uploadError)]);
 
   useEffect(() => {
     if (!cameraImage) return;
@@ -44,59 +57,67 @@ const useDriverApplication = () => {
   }, [cameraImageChange]);
 
   useEffect(() => {
+    updateUser();
+  }, [url]);
+
+  useEffect(() => {
     if (!data) return;
 
-    console.log(`${stringify(data)}`);
-    console.log();
+    recieveData();
   }, [stringify(data)]);
-
-  const [error, setError, errorChange] = useOnChange(initialValue);
 
   const clearError = () => setError(initialValue);
 
-  const submitImage = async () => {
-    if (!image?.base64)
-      return setError((prev) => ({ ...prev, image: "Missing image" }));
+  const updateUser = () => {
+    if (!url || !user) return;
 
-    const formData = new FormData();
+    put(`users/${user.id}`, { ...user, liscence: url });
+  };
 
-    formData.append("image", image.base64);
-    formData.append("key", CONSTANTS.ImageAPIKey);
+  const updateParty = () => {
+    setDataIsParty(true);
 
-    try {
-    } catch (err) {}
+    let drivers = party.drivers;
+
+    drivers.push(user!.id);
+
+    put(`parties/${party.id}`, { ...party, drivers });
+  };
+
+  const recieveData = () => {
+    if (!data) return;
+
+    if (!dataIsParty) return updateParty();
+
+    setSuccess(true);
+    setLoading(false);
   };
 
   const submit = async () => {
     clearError();
 
-    // fetch(CONSTANTS.ImageAPIUrl, {
-    //   method: "POST",
-    //   body: formData,
-    // })
-    //   .then((res) => res.json())
-    //   .then((res) => {
-    //     console.log(`Response: ${stringify(res)}`);
-    //   })
-    //   .catch((err) => {
-    //     // setError(prev => ({ ...prev, server: err.message }))
-    //     console.log(stringify(err));
-    //   });
+    if (!user) return;
 
-    // const postData = {
-    //   name: "Test",
-    //   image: image.base64,
-    // };
+    const usingUserLiscence = image == null && user.liscence !== undefined;
 
-    // console.log(CONSTANTS.ImageAPIUrl);
+    if (!usingUserLiscence && !image?.base64)
+      return setError((prev) => ({ ...prev, image: "Missing image" }));
 
-    // postImage("", postData, CONSTANTS.ImageAPIUrl);
+    setSuccess(false);
+    setDataIsParty(false);
+    setLoading(true);
+
+    if (!usingUserLiscence && image?.base64) return upload(image.base64);
+
+    if (!usingUserLiscence) return;
+
+    updateParty();
   };
 
   return {
     submit,
-    // loading:,
-    // success,
+    loading,
+    success,
     error,
     errorChange,
 

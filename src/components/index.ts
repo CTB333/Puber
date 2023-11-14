@@ -20,6 +20,7 @@ import PartySnippetList from "./PartySnippetList";
 import RedFlagSnippet from "./RedFlagSnippet";
 import RedFlagList from "./RedFlagList";
 import GMap from "./GMap";
+import UserCircle from "./UserCircle";
 
 export {
   Button,
@@ -47,4 +48,5 @@ export {
   RedFlagSnippet,
   RedFlagList,
   GMap,
+  UserCircle,
 };

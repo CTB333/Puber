@@ -9,6 +9,8 @@ export type Party = {
   guests: number[];
   hideAddress: boolean;
   image: string;
+  capacity: number;
+  rating: number;
   userId: number;
 };
 
@@ -23,6 +25,8 @@ export type PartyData = {
   guests: number[];
   hideAddress: boolean;
   image: string;
+  capacity: number;
+  rating: number;
 };
 
 export type PartyDate = {

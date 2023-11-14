@@ -4,16 +4,18 @@ import Icon from "./Icon";
 import StarRow from "./StartRow";
 import { User } from "../interfaces";
 import COLORS from "../colors";
+import UserCircle from "./UserCircle";
 
 type UserHeaderProps = {
   user?: User | null;
   hideStars?: boolean;
+  onUserPress?: () => void;
 };
 
-const UserHeader = ({ user, hideStars }: UserHeaderProps) => {
+const UserHeader = ({ user, hideStars, onUserPress }: UserHeaderProps) => {
   return (
     <View style={[STYLES.center]}>
-      <Icon name="user" size={110} />
+      <UserCircle user={user} onPress={onUserPress} size={110} />
       <View style={[{ marginBottom: 15 }]} />
       <Text style={[STYLES.fs2, STYLES.bold, STYLES.colorPrimary]}>
         {user?.firstName ?? ""} {user?.lastName ?? ""}

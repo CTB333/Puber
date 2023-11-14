@@ -5,10 +5,11 @@ export type User = {
   email: string;
   userName: string;
   password: string;
-  liscence?: string;
   rsvpStatus: boolean;
   notiStatus: boolean;
   rating: number;
+  liscence?: string;
+  image?: string;
 };
 
 export type UserData = {
@@ -18,4 +19,5 @@ export type UserData = {
   userName: string;
   password: string;
   liscence?: string;
+  image?: string;
 };

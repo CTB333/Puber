@@ -1,11 +1,14 @@
 import { useEffect } from "react";
 
-const useOnSuccess = (cb: () => void, success: boolean) => {
-  useEffect(() => {
-    if (!success) return;
+const useOnSuccess = (cb: () => void, success: boolean, deps?: any[]) => {
+  useEffect(
+    () => {
+      if (!success) return;
 
-    cb();
-  }, [success]);
+      cb();
+    },
+    deps ? [...deps, success] : [success]
+  );
 
   return;
 };

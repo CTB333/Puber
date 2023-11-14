@@ -4,6 +4,7 @@ import STYLES from "../styles";
 import Icon from "./Icon";
 import COLORS from "../colors";
 import PressOpaque from "./PressOpaque";
+import UserCircle from "./UserCircle";
 
 type UserSnippetProps = {
   user?: User;
@@ -24,7 +25,7 @@ const UserSnippet = ({ user, onPress }: UserSnippetProps) => {
         { height, width: height, justifyContent: "space-evenly" },
       ]}
     >
-      <Icon name="user" color={COLORS.primary} size={50} />
+      <UserCircle user={user} color={COLORS.primary} size={50} />
       <Text style={[STYLES.fs1, STYLES.bold, STYLES.colorPrimary]}>
         {user?.userName ?? "No User Yet"}
       </Text>

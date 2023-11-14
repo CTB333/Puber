@@ -10,7 +10,8 @@
       "notiStatus": false,
       "rating": 5,
       "id": 1,
-      "liscence": "https://i.ibb.co/dpNFSHq/95d3b318164f.jpg"
+      "liscence": "https://i.ibb.co/dpNFSHq/95d3b318164f.jpg",
+      "image": "https://i.ibb.co/G702CGF/7fcd4d18761e.jpg"
     },
     {
       "userName": "Alice123",
@@ -115,209 +116,8 @@
   "parties": [
     {
       "userId": 1,
-      "title": "CTB KickOff",
-      "image": "https://i.ibb.co/dpNFSHq/95d3b318164f.jpg",
-      "desc": "Turn off the internet",
-      "location": {
-        "street": "65 Marine Dr",
-        "city": "Buffalo",
-        "state": "NY",
-        "zip": "14228",
-        "country": "US",
-        "fullAddress": "65 Marine Dr Buffalo NY 14228 US",
-        "lat": 43.028123,
-        "lng": -78.79272739999999
-      },
-      "date": {
-        "date": "11/15/23",
-        "start": "9:00 PM",
-        "end": "12:00 PM",
-        "dateTime": 1700100000000
-      },
-      "tags": [
-        "21 +",
-        "Rager",
-        "Byob"
-      ],
-      "drivers": [],
-      "guests": [
-        9,
-        7,
-        2,
-        5,
-        3,
-        6,
-        10,
-        4
-      ],
-      "hideAddress": false,
-      "id": 1
-    },
-    {
-      "userId": 2,
-      "title": "Rochester Tech Meetup",
-      "image": "https://i.ibb.co/dpNFSHq/95d3b318164f.jpg",
-      "desc": "Discuss the latest in technology",
-      "location": {
-        "street": "123 Main St",
-        "city": "Rochester",
-        "state": "NY",
-        "zip": "14623",
-        "country": "US",
-        "fullAddress": "123 Main St Rochester NY 14623 US",
-        "lat": 43.090182,
-        "lng": -77.678488
-      },
-      "date": {
-        "date": "11/20/23",
-        "start": "6:30 PM",
-        "end": "8:30 PM",
-        "dateTime": 1700500000000
-      },
-      "tags": [
-        "Tech",
-        "Calm",
-        "Uberable",
-        "Drivers"
-      ],
-      "drivers": [
-        1
-      ],
-      "guests": [
-        8,
-        5,
-        3,
-        1,
-        7
-      ],
-      "hideAddress": false,
-      "id": 2
-    },
-    {
-      "userId": 3,
-      "title": "Rochester Art Exhibition",
-      "image": "https://i.ibb.co/dpNFSHq/95d3b318164f.jpg",
-      "desc": "Explore local art creations",
-      "location": {
-        "street": "456 Art Ave",
-        "city": "Rochester",
-        "state": "NY",
-        "zip": "14612",
-        "country": "US",
-        "fullAddress": "456 Art Ave Rochester NY 14612 US",
-        "lat": 43.24205,
-        "lng": -77.635319
-      },
-      "date": {
-        "date": "11/25/23",
-        "start": "5:00 PM",
-        "end": "9:00 PM",
-        "dateTime": 1700900000000
-      },
-      "tags": [
-        "Art",
-        "Rager",
-        "Byow",
-        "Drivers"
-      ],
-      "drivers": [],
-      "guests": [
-        10,
-        8,
-        6,
-        7,
-        2,
-        4,
-        9
-      ],
-      "hideAddress": false,
-      "id": 3
-    },
-    {
-      "userId": 4,
-      "title": "Rochester Food Festival",
-      "image": "https://i.ibb.co/dpNFSHq/95d3b318164f.jpg",
-      "desc": "Savor delicious local cuisines",
-      "location": {
-        "street": "789 Foodie Blvd",
-        "city": "Rochester",
-        "state": "NY",
-        "zip": "14616",
-        "country": "US",
-        "fullAddress": "789 Foodie Blvd Rochester NY 14616 US",
-        "lat": 43.20945,
-        "lng": -77.64212
-      },
-      "date": {
-        "date": "12/02/23",
-        "start": "12:00 PM",
-        "end": "4:00 PM",
-        "dateTime": 1701500000000
-      },
-      "tags": [
-        "Food",
-        "Calm",
-        "21 +"
-      ],
-      "drivers": [],
-      "guests": [
-        5,
-        9,
-        1,
-        8,
-        3,
-        7,
-        2,
-        10,
-        6
-      ],
-      "hideAddress": false,
-      "id": 4
-    },
-    {
-      "userId": 5,
-      "title": "Rochester Music Concert",
-      "image": "https://i.ibb.co/dpNFSHq/95d3b318164f.jpg",
-      "desc": "Enjoy live music performances",
-      "location": {
-        "street": "567 Melody Lane",
-        "city": "Rochester",
-        "state": "NY",
-        "zip": "14620",
-        "country": "US",
-        "fullAddress": "567 Melody Lane Rochester NY 14620 US",
-        "lat": 43.115417,
-        "lng": -77.619606
-      },
-      "date": {
-        "date": "12/10/23",
-        "start": "7:00 PM",
-        "end": "10:00 PM",
-        "dateTime": 1702300000000
-      },
-      "tags": [
-        "Music",
-        "Byob",
-        "X-Rated",
-        "Drivers"
-      ],
-      "drivers": [
-        1
-      ],
-      "guests": [
-        3,
-        7,
-        9,
-        10,
-        1
-      ],
-      "hideAddress": false,
-      "id": 5
-    },
-    {
-      "userId": 1,
-      "title": "Juice",
-      "desc": "Apple Juice to be specific",
+      "title": "Super Code",
+      "desc": "This will be the best party you’ve ever seen.",
       "location": {
         "street": "32 Lehigh Station Rd",
         "city": "West Henrietta",
@@ -329,22 +129,61 @@
         "lng": -77.68831109999999
       },
       "date": {
-        "date": "11/13/23",
+        "date": "11/15/23",
         "start": "9:00 PM",
         "end": "12:00 PM",
-        "dateTime": 1699927200000
+        "dateTime": 1700100000000
       },
+      "capacity": 10,
+      "rating": 2,
       "tags": [
+        "Byob",
         "21 +",
         "Byow",
         "Drivers",
-        "Uberable"
+        "Uberable",
+        "Tech"
       ],
       "drivers": [],
       "guests": [],
-      "image": "https://i.ibb.co/YcSRF3Z/6e0650dc34ab.jpg",
-      "hideAddress": true,
-      "id": 6
+      "image": "https://i.ibb.co/r0Y8qqK/bfb8eaff9f77.jpg",
+      "hideAddress": false,
+      "id": 1
+    },
+    {
+      "userId": 1,
+      "title": "Downfall",
+      "desc": "Music by Lil Durk and King Von. Performers will be in skin tight bust down suits. Baddies will be out and busy… don’t slide if you ain’t standing on biddness.",
+      "location": {
+        "street": " Exchange St",
+        "city": "Rochester",
+        "state": "NY",
+        "zip": "14608",
+        "country": "US",
+        "fullAddress": " Exchange St Rochester NY 14608 US",
+        "lat": 43.1390238,
+        "lng": -77.6206662
+      },
+      "date": {
+        "date": "11/20/23",
+        "start": "9:00 PM",
+        "end": "12:00 PM",
+        "dateTime": 1700532000000
+      },
+      "capacity": 25,
+      "rating": 5,
+      "tags": [
+        "Food",
+        "Art",
+        "Tech",
+        "X-Rated",
+        "Rager"
+      ],
+      "drivers": [],
+      "guests": [],
+      "image": "https://i.ibb.co/Y8Grb94/6d2452fca03c.jpg",
+      "hideAddress": false,
+      "id": 2
     }
   ],
   "flags": [

@@ -6,6 +6,7 @@ import useOpen from "./useOpen";
 import { useUser } from "../providers";
 import useFetch from "./useFetch";
 import { stringify } from "../utils";
+import RateParty from "../utils/rating";
 
 const useParyDetail = (routeParty: Party) => {
   const {
@@ -66,10 +67,10 @@ const useParyDetail = (routeParty: Party) => {
     if (userIsRsvpd) rsvpIds = rsvpIds.filter((rsvpId) => rsvpId !== user.id);
     else rsvpIds.push(user.id);
 
-    put(`parties/${party.id}`, {
-      ...party,
-      guests: rsvpIds,
-    });
+    let newParty = { ...party, guests: rsvpIds };
+    newParty.rating = RateParty(newParty);
+
+    put(`parties/${party.id}`, newParty);
   };
 
   return {

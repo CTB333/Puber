@@ -111,6 +111,17 @@
       "notiStatus": true,
       "rating": 5,
       "id": 10
+    },
+    {
+      "firstName": "Test",
+      "lastName": "Test",
+      "email": "Test",
+      "userName": "Test",
+      "password": "Test",
+      "rsvpStatus": true,
+      "notiStatus": true,
+      "rating": 5,
+      "id": 11
     }
   ],
   "parties": [
@@ -136,9 +147,20 @@
       },
       "capacity": 10,
       "rating": 2,
-      "tags": ["Byob", "21 +", "Byow", "Drivers", "Uberable", "Tech"],
+      "tags": [
+        "Byob",
+        "21 +",
+        "Byow",
+        "Drivers",
+        "Uberable",
+        "Tech"
+      ],
       "drivers": [],
-      "guests": [2, 3, 4],
+      "guests": [
+        2,
+        3,
+        4
+      ],
       "image": "https://i.ibb.co/r0Y8qqK/bfb8eaff9f77.jpg",
       "hideAddress": false,
       "id": 1
@@ -165,9 +187,19 @@
       },
       "capacity": 25,
       "rating": 5,
-      "tags": ["Food", "Art", "Tech", "X-Rated", "Rager"],
+      "tags": [
+        "Food",
+        "Art",
+        "Tech",
+        "X-Rated",
+        "Rager"
+      ],
       "drivers": [],
-      "guests": [5, 6, 7],
+      "guests": [
+        5,
+        6,
+        7
+      ],
       "image": "https://i.ibb.co/Y8Grb94/6d2452fca03c.jpg",
       "hideAddress": false,
       "id": 2

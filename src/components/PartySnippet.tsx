@@ -56,7 +56,7 @@ const PartySnippet = ({
           </Text>
         ) : null}
 
-        <StarRow />
+        <StarRow filled={party.rating} />
       </View>
       <View style={[STYLES.center]}>
         <Icon size={35} color={COLORS.white} name="right" />

@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Camera } from "expo-camera";
+import { Camera, CameraType } from "expo-camera";
 import useOnChange from "./useOnChange";
 import { stringify } from "../utils";
 import { Image } from "../interfaces";
@@ -11,6 +11,7 @@ const initialValue = {
 const useCamera = () => {
   const cameraRef = useRef<Camera | null>(null);
   const [cameraOpen, setCameraOpen] = useState(false);
+  const [backCamera, setBackCamera] = useState(true);
   const [error, setError, errorChange] = useOnChange(initialValue);
   const [image, setImage, imageChange] = useOnChange<Image | null>(null);
 
@@ -32,6 +33,10 @@ const useCamera = () => {
 
   const closeCamera = () => setCameraOpen(false);
 
+  const flipCamera = () => {
+    setBackCamera((prev) => !prev);
+  };
+
   const takePicture = async () => {
     if (!cameraRef.current) return;
 
@@ -52,6 +57,8 @@ const useCamera = () => {
     takePicture,
     image,
     imageChange,
+    backCamera,
+    flipCamera,
 
     error,
     errorChange,

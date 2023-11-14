@@ -28,7 +28,6 @@ import CameraScreen from "./CameraScreen";
 
 const AddPartyScreen = ({ navigation }: AddPartyScreenProps) => {
   useEnableDrawerSwipe();
-  useAccountHeader();
 
   const {
     submit,
@@ -50,6 +49,8 @@ const AddPartyScreen = ({ navigation }: AddPartyScreenProps) => {
     setStartTime,
     endTime,
     setEndTime,
+    capacity,
+    setCapacity,
     street,
     setStreet,
     city,
@@ -72,6 +73,8 @@ const AddPartyScreen = ({ navigation }: AddPartyScreenProps) => {
     cameraOpen,
     takePicture,
   } = useAddParty();
+
+  useAccountHeader(false, [cameraOpen]);
 
   const successMsg = useSuccessMessage();
 
@@ -119,6 +122,11 @@ const AddPartyScreen = ({ navigation }: AddPartyScreenProps) => {
         <FormHeader title="Basic Info" />
         <Input placeholder="Party Title" state={title} setState={setTitle} />
         <Input placeholder="Party Desc" state={desc} setState={setDesc} />
+        <Input
+          placeholder="Party Capacity"
+          state={capacity}
+          setState={setCapacity}
+        />
 
         <FormHeader title="Location Info" />
         <Input placeholder="Street" state={street} setState={setStreet} />

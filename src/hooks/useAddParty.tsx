@@ -14,6 +14,7 @@ import useOnChange from "./useOnChange";
 import { useUser } from "../providers";
 import useCamera from "./useCamera";
 import useUploadImage from "./useUploadImage";
+import RateParty from "../utils/rating";
 
 const initialError = {
   title: "",
@@ -21,6 +22,7 @@ const initialError = {
   date: "",
   startTime: "",
   endTime: "",
+  capacity: "",
   camera: "",
   image: "",
   server: "",
@@ -53,6 +55,7 @@ const useAddParty = () => {
   const [date, setDate] = useState(dateToString(new Date()));
   const [startTime, setStartTime] = useState("9:00 PM");
   const [endTime, setEndTime] = useState("12:00 PM");
+  const [capacity, setCapacity] = useState("10");
   const [hideAddress, setHideAddress] = useState(false);
   const [tags, setTags] = useState<PartyTag[]>([]);
   const {
@@ -124,6 +127,7 @@ const useAddParty = () => {
 
     setSuccess(true);
     setLoading(false);
+    setImage(null);
   }, [stringify(data)]);
 
   const clearError = () => {
@@ -164,6 +168,24 @@ const useAddParty = () => {
     }
     if (endTime.length == 0) {
       setError((prev) => ({ ...prev, endTime: `Missing party end time` }));
+      return errorOut();
+    }
+    if (isNaN(Number(capacity))) {
+      setError((prev) => ({
+        ...prev,
+        capacity: `Party capacity must be a number`,
+      }));
+      return errorOut();
+    }
+    if (parseInt(capacity) < 10) {
+      setError((prev) => ({ ...prev, capacity: `Min allowed capacity is 10` }));
+      return errorOut();
+    }
+    if (parseInt(capacity) > 1000) {
+      setError((prev) => ({
+        ...prev,
+        capacity: `Max allowed capacity is 1000`,
+      }));
       return errorOut();
     }
 
@@ -239,12 +261,16 @@ const useAddParty = () => {
         end: endTime,
         dateTime: dateTime.getTime(),
       },
+      capacity: parseInt(capacity),
+      rating: 0,
       tags,
       drivers: [],
       guests: [],
       image: url,
       hideAddress,
     };
+
+    party.rating = RateParty(party);
 
     post(`parties`, party);
   };
@@ -282,6 +308,8 @@ const useAddParty = () => {
     setStartTime,
     endTime,
     setEndTime,
+    capacity,
+    setCapacity,
     street,
     setStreet,
     city,

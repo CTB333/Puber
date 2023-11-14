@@ -46,6 +46,9 @@ const IconList = {
   addFlag: (props: BaseIconProps) => (
     <MaterialCommunityIcons {...props} name="flag-plus" />
   ),
+  flipCamera: (props: BaseIconProps) => (
+    <MaterialCommunityIcons {...props} name="camera-flip" />
+  ),
   save: (props: BaseIconProps) => <MaterialIcons {...props} name="save" />,
   userLocation: (props: BaseIconProps) => (
     <MaterialIcons {...props} name="my-location" />
@@ -70,6 +73,7 @@ type IconName =
   | "flag"
   | "addFlag"
   | "save"
+  | "flipCamera"
   | "userLocation";
 
 export type IconProps = {

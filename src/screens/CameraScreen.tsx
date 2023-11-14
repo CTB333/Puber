@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, Image } from "react-native";
 import STYLES from "../styles";
 import { useNoHeader } from "../hooks";
 import { Button, Icon, PressOpaque } from "../components";
-import { Camera } from "expo-camera";
+import { Camera, CameraType } from "expo-camera";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import COLORS from "../colors";
 
@@ -11,6 +11,8 @@ type CameraScreenProps = {
   takePicture: () => Promise<void>;
   cameraRef: React.MutableRefObject<Camera | null>;
   boxHeight?: number;
+  flipCamera?: () => void;
+  backCamera?: boolean;
 };
 
 const CameraScreen = ({
@@ -18,6 +20,8 @@ const CameraScreen = ({
   cameraRef,
   takePicture,
   boxHeight,
+  flipCamera,
+  backCamera,
 }: CameraScreenProps) => {
   useNoHeader();
   const { bottom } = useSafeAreaInsets();
@@ -25,6 +29,7 @@ const CameraScreen = ({
   return (
     <View style={[STYLES.flex]}>
       <Camera
+        type={backCamera ? CameraType.back : CameraType.front}
         style={[STYLES.flex, STYLES.relative]}
         ref={(ref) => {
           cameraRef.current = ref;
@@ -64,7 +69,7 @@ const CameraScreen = ({
               top: 0,
               left: 0,
               right: 0,
-              justifyContent: "flex-end",
+              justifyContent: flipCamera ? "space-between" : "flex-end",
               zIndex: 10,
             },
           ]}
@@ -72,6 +77,11 @@ const CameraScreen = ({
           <PressOpaque onPress={closeCamera} style={[STYLES.center]}>
             <Icon name="cross" color={COLORS.white} size={25} />
           </PressOpaque>
+          {flipCamera ? (
+            <PressOpaque onPress={flipCamera} style={[STYLES.center]}>
+              <Icon name="flipCamera" color={COLORS.white} size={25} />
+            </PressOpaque>
+          ) : null}
         </View>
 
         <View

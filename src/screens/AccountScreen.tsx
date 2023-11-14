@@ -23,6 +23,7 @@ import {
   UserHeader,
 } from "../components";
 import { useUser } from "../providers";
+import CameraScreen from "./CameraScreen";
 
 const AccountScreen = ({ navigation }: AccountScreenProps) => {
   const { user } = useUser();
@@ -34,6 +35,15 @@ const AccountScreen = ({ navigation }: AccountScreenProps) => {
     error,
     errorChange,
     loading,
+    updatingPhoto,
+
+    openCamera,
+    closeCamera,
+    cameraOpen,
+    cameraRef,
+    takePicture,
+    flipCamera,
+    backCamera,
 
     userName,
     setUserName,
@@ -59,12 +69,13 @@ const AccountScreen = ({ navigation }: AccountScreenProps) => {
     password,
     rsvpStatus,
     notiStatus,
+    cameraOpen,
   ]);
 
   const successMsg = useSuccessMessage();
 
   useOnSuccess(() => {
-    successMsg(`Account Info Saved`);
+    successMsg(updatingPhoto ? `Account Photo Saved` : `Account Info Saved`);
   }, success);
 
   useErrorMsg(error, errorChange);
@@ -84,11 +95,22 @@ const AccountScreen = ({ navigation }: AccountScreenProps) => {
     endSession();
   };
 
+  if (cameraOpen)
+    return (
+      <CameraScreen
+        closeCamera={closeCamera}
+        cameraRef={cameraRef}
+        takePicture={takePicture}
+        flipCamera={flipCamera}
+        backCamera={backCamera}
+      />
+    );
+
   return (
     <View style={[STYLES.page]}>
       <ScrollView showsVerticalScrollIndicator={false} style={[STYLES.width]}>
         <View style={[STYLES.width]}>
-          <UserHeader user={user} />
+          <UserHeader onUserPress={openCamera} user={user} />
           <FormHeader title="Account Info" />
           <Input
             placeholder="Username"

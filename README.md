@@ -32,12 +32,9 @@ URL : "https://[copy the url up to the arrow next to Forwarding in terminal 3].n
 ```
 
 ### Unsupported Features and Bugs
-```bash
 Images for Parties and Profiles are not entirely implemented yet
-```
 
 ### Introductory User Operations
-```
 1. User Authentication:
 If you're new to Puber, start by creating an account. If you already have one, simply log in. Authentication ensures a personalized and secure experience.
 
@@ -58,4 +55,3 @@ As an attending user, share your thoughts by reviewing parties. If you notice an
 
 7. Becoming Puber Hosts or Drivers:
 Want to take the lead? Become a Puber host and add parties to the system. If driving is more your style, sign up as a driver and be featured at specific public parties. Safety first – don't forget to upload a picture of your current driver's license during signup.
-```

@@ -7,6 +7,7 @@ import CONSTANTS from "../Constants";
 import COLORS from "../colors";
 import { dateToString } from "../utils";
 import StarRow from "./StartRow";
+import { Constants } from "expo-camera";
 
 type PartySnippetProps = {
   primaryColor?: boolean;
@@ -28,13 +29,14 @@ const PartySnippet = ({
       onPress={onPress}
       style={(pressed) => [
         STYLES.row,
-        STYLES.width,
+        CONSTANTS.ScreenWidth,
         STYLES.rad15,
         STYLES.p15,
         pressed || !primaryColor ? STYLES.bgAccent : STYLES.bgPrimary,
         {
           justifyContent: "space-between",
           height: CONSTANTS.ScreenHieght / 6,
+          width: CONSTANTS.ScreenWidth - 30
         },
         lessOpaque
           ? {

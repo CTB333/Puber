@@ -37,7 +37,7 @@ Images for Parties and Profiles are not entirely implemented yet
 ```
 
 ### Introductory User Operations
-```bash
+```
 1. User Authentication:
 If you're new to Puber, start by creating an account. If you already have one, simply log in. Authentication ensures a personalized and secure experience.
 

@@ -193,7 +193,7 @@ const CONSTANTS = {
   ScreenHieght: height,
   ScreenWidth: width,
   PartyImageHeight: height / 3,
-  URL: "http://3555-2620-8d-8000-1058-150-9057-b274-3d7e.ngrok.io/", // Must include '/' at the end of url
+  URL: " http://1d12-2620-8d-8000-1058-8c4e-7e78-5776-ddcb.ngrok.io/", // Must include '/' at the end of url
   GeoCodeURL: "https://maps.googleapis.com/maps/api/geocode/json?address=",
   DistanceURL: (destinations: string, origin: string, key: string) =>
     `https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&destinations=${destinations}&origins=${origin}&key=${key}`,

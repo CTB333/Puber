@@ -72,6 +72,8 @@ const AddPartyScreen = ({ navigation }: AddPartyScreenProps) => {
     closeCamera,
     cameraOpen,
     takePicture,
+    flipCamera,
+    backCamera,
   } = useAddParty();
 
   useAccountHeader(false, [cameraOpen]);
@@ -90,6 +92,8 @@ const AddPartyScreen = ({ navigation }: AddPartyScreenProps) => {
   if (cameraOpen)
     return (
       <CameraScreen
+        flipCamera={flipCamera}
+        backCamera={backCamera}
         takePicture={takePicture}
         cameraRef={cameraRef}
         closeCamera={closeCamera}

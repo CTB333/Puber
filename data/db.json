@@ -203,6 +203,39 @@
       "image": "https://i.ibb.co/Y8Grb94/6d2452fca03c.jpg",
       "hideAddress": false,
       "id": 2
+    },
+    {
+      "userId": 1,
+      "title": "Super party",
+      "desc": "Super party in buffalo",
+      "location": {
+        "street": "65 Marine Dr",
+        "city": "Buffalo",
+        "state": "NY",
+        "zip": "14228",
+        "country": "US",
+        "fullAddress": "65 Marine Dr Buffalo NY 14228 US",
+        "lat": 43.028123,
+        "lng": -78.79272739999999
+      },
+      "date": {
+        "date": "11/18/23",
+        "start": "9:00 PM",
+        "end": "12:00 PM",
+        "dateTime": 1700359200000
+      },
+      "capacity": 50,
+      "rating": 1,
+      "tags": [
+        "21 +",
+        "Byob",
+        "Byow"
+      ],
+      "drivers": [],
+      "guests": [],
+      "image": "https://i.ibb.co/B6bKrsZ/02357df7316b.jpg",
+      "hideAddress": false,
+      "id": 3
     }
   ],
   "flags": [

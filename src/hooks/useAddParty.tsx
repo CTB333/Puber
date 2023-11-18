@@ -40,6 +40,8 @@ const useAddParty = () => {
     takePicture,
     image: cameraImage,
     imageChange: cameraImageChange,
+    flipCamera,
+    backCamera,
 
     error: cameraError,
     errorChange: cameraErrorChange,
@@ -331,6 +333,8 @@ const useAddParty = () => {
     closeCamera,
     cameraOpen,
     takePicture,
+    flipCamera,
+    backCamera,
   };
 };
 

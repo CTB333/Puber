@@ -33,6 +33,7 @@ URL : "https://[copy the url up to the arrow next to Forwarding in terminal 3].n
 
 ### Unsupported Features and Bugs
 Images for Parties and Profiles are not entirely implemented yet
+The friends system has also not been fully implemented yet
 
 ### Introductory User Operations
 1. User Authentication:
